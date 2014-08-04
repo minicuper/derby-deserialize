@@ -1,0 +1,22 @@
+{
+  "name": "derby-deserialize",
+  "version": "0.0.0",
+  "description": "Derby views deserializer",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/test.mocha.js && ./node_modules/.bin/jshint ./index.js"
+  },
+  "keywords": [
+    "derby"
+  ],
+  "author": "Artur Zayats <zag2art@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "derby-templates": "^0.1.8"
+  },
+  "devDependencies": {
+    "expect.js": "~0.3.1",
+    "jshint": "~2.4.4",
+    "mocha": "~1.17.1"
+  }
+}
