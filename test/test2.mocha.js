@@ -7,6 +7,8 @@ require('derby-parsing')
 var expressions = derbyTemplates.expressions;
 var templates = derbyTemplates.templates;
 
+var beautify = require('js-beautify').html;
+
 
 describe('Views', function() {
 
@@ -18,9 +20,12 @@ describe('Views', function() {
 
 
       console.log(view.name);
+      console.log();
       var html = view.deserialize();
 
-      console.log('html:', html);
+      console.log(beautify(html, {indent_size: 2}));
+
+      console.log('------------------------------------------------------------------------------');
     });
 
   });
