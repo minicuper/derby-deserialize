@@ -107,6 +107,13 @@ describe('Expressions', function() {
     expect(template.deserialize()).equal(html);
   });
 
+  it('{{@content}}', function() {
+    var html = '{{@content}}';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
 });
 
 describe('bound/unbound', function() {
@@ -242,6 +249,102 @@ describe('each', function() {
   });
 
 });
+
+
+describe('view', function() {
+
+
+  it('<view name="tmp"></view>', function() {
+    var html = '<view name="tmp"></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+
+  it('<view name="tmp"><br/></view>', function() {
+    var html = '<view name="tmp"><br/></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('<view name="tmp"><br/><input/></view>', function() {
+    var html = '<view name="tmp"><br/><input/></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('<view name="tmp" class="hello"></view>', function() {
+    var html = '<view name="tmp" class="hello"></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('<view name="tmp" as="hello"></view>', function() {
+    var html = '<view name="tmp" as="hello"></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('<view name="tmp" on-lick="hello()"></view>', function() {
+    var html = '<view name="tmp" on-click="hello()"></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('Attributes - label: <view name="tmp"><label></label></view>', function() {
+    var html = '<view name="tmp"><label></label></view>';
+    var template = getTemplate('tmp', html, {'attributes': 'label'});
+    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('Attributes - label: <view name="tmp"><label><br/></label></view>', function() {
+    var html = '<view name="tmp"><label><br/></label></view>';
+    var template = getTemplate('tmp', html, {'attributes': 'label'});
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+  it('No Attributes - label: <view name="tmp"><label></label></view>', function() {
+    var html = '<view name="tmp"><label></label></view>';
+    var template = getTemplate('tmp', html);
+//    console.log('serialization: ', template.serialize());
+    expect(template.deserialize()).equal(html);
+  });
+
+//  it('Attributes - label: <view name="tmp"><label class="hello"></label></view>', function() {
+//    var html = '<view name="tmp"><label class="hello"></label></view>';
+//    var template = getTemplate('tmp', html, {'attributes': 'label'});
+//    console.log('serialization: ', template.serialize());
+//    expect(template.deserialize()).equal(html);
+//  });
+
+
+//  {'attributes': 'label tip option-content', 'arrays': 'option/options', 'element': 'l-dropdown'}
+
+});
+
+//describe('arbitrary', function() {
+//
+//
+//  it('infinite scroll', function() {
+//    var views= new templates.Views();
+//    view = views.register('tmp');
+//    view.template = new templates.Template([new templates.Comment('infinite-scroll:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.Attribute('infinite-scroll')}, [new templates.DynamicText(new expressions.AttributePathExpression('content', [], new expressions.ExpressionMeta('@content')))], [new templates.ElementOn('scroll', new expressions.FnExpression(['scroll'], [])), new templates.MarkupAs(['element'])], false)]);
+//
+//    console.log('inf:', view.template.deserialize());
+//  });
+//
+//
+//});
+
+
 
 function getTemplate(name, source, options){
   var views= new templates.Views();
