@@ -12,6 +12,7 @@
   "author": "Artur Zayats <zag2art@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "derby-parsing": "^0.1.5",
     "derby-templates": "^0.1.8"
   },
   "devDependencies": {
