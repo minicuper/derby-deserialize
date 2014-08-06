@@ -458,6 +458,20 @@ describe('view', function() {
     expect(des).equal(html);
   });
 
+  it('Arrays - option: <view name="dropdown" class="hello {{@class}}"><label>hello {{@class}}</label></view>', function() {
+    var html = '<view name="dropdown" class="hello {{@class}}"><label>hello {{@class}}</label></view>';
+    var views= new templates.Views();
+    view = views.register('dropdown', '{{@label.class}}', {'arrays': 'option/options', attributes: "label"});
+    view.parse();
+
+    view = views.register('tmp', html);
+    view.parse();
+    var ser = view.template.serialize();
+//    console.log('serialization: ', ser);
+    var des = view.deserialize();
+    expect(des).equal(html);
+  });
+
 //  {'attributes': 'label tip option-content', 'arrays': 'option/options', 'element': 'l-dropdown'}
 
 });

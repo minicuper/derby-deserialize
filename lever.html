@@ -28,17 +28,10 @@ Lever Hire
 
 <Body:>
 
-<view name="page">
-  <pageNav>
-    <div class="page-nav">
-      <a href="{{url('hire.home')}}" class="selected">
-        <view name="icon-mine-list"></view>
-        Candidates</a>
-      <view name="add-candidate"></view>
-      <view name="drafts"></view>
-    </div>
-  </pageNav>
-</view>
+<view name="page" pageNav="<div class=" page-nav "><a href="{{url( 'hire.home')}} " class="selected "><view name="icon-mine-list "></view>
+Candidates</a>
+<view name="add-candidate "></view>
+<view name="drafts "></view></div>"></view>
 <view name="listeners" as="page,listeners"></view>
 
 <!------------------------------------------------------------------------------>
@@ -189,9 +182,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
   {{if #field.description}}
   <p class="description">{{#field.description}}</p>{{/}}</div>
 <div class="card-value">
-  <view name="l-score-thumbs">
-    <score>{{#field.value}}</score>
-  </view>
+  <view name="l-score-thumbs" score="{{#field.value}}"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -215,10 +206,8 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
   {{if #field.description}}
   <p class="description">{{#field.description}}</p>{{/}}</div>
 <div class="card-value">
-  <view name="l-dropdown" width="fit" class="tall-option caps-option">
+  <view name="l-dropdown" width="fit" class="tall-option caps-option" prompt="{{#field.prompt}}" value="{{#field.value}}">
     <options>{{#field.options}}</options>
-    <prompt>{{#field.prompt}}</prompt>
-    <value>{{#field.value}}</value>
   </view>
 </div>
 
@@ -463,9 +452,7 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
 
 <l-card:fields:note:show:>
 
-<view name="l-identicon" class="large has-tip">
-  <user>{{#root.users_base[#field.userId]}}</user>
-</view>
+<view name="l-identicon" user="{{#root.users_base[#field.userId]}}" class="large has-tip"></view>
 <div class="card-key">{{#root.users_base[#field.userId].name}}</div>
 <div class="card-value">{{if #field.value}}{{unescaped shareText(#field.value)}}{{else}}<span class="card-value-empty">Not specified</span>{{/}}</div>{{if #field.score}}
 <view name="l-card:fields:note:callout"></view>{{/}}
@@ -481,9 +468,7 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
 <div class="card-value">
   <textarea class="card-field-input classic-input" type="text" placeholder="{{#field.prompt}}">{{#field.value}}</textarea>
 </div>
-<view name="l-score-thumbs" class="light">
-  <score>{{#field.score}}</score>
-</view>
+<view name="l-score-thumbs" class="light" score="{{#field.score}}"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -774,11 +759,10 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
     <input class="classic-input" type="text" value="{{#field.text}}" placeholder="Type your question ..." />
   </div>
 </div>
-<view name="l-dropdown" buttonClass="card-question-type btn-no-style" class="tall-option caps-option has-icon" optionContent="{{if #option.value == 'text'}}<view name=" l-card:fields:icon-text-input
+<view name="l-dropdown" buttonClass="card-question-type btn-no-style" class="tall-option caps-option has-icon" value="{{#field.type}}" optionContent="{{if #option.value == 'text'}}<view name=" l-card:fields:icon-text-input
 "></view>{{else if #option.value == 'textarea'}}<view name="l-card:fields:icon-text-input "></view>{{else if #option.value == 'multiple-choice'}}<view name="l-card:fields:icon-radio-button "></view>{{else if #option.value == 'multiple-select'}}<view name="l-card:fields:icon-checkbox
 "></view>{{else if #option.value == 'dropdown'}}<view name="l-card:fields:icon-plus "></view>{{else if #option.value == 'score-system'}}<view name="l-card:fields:icon-hire "></view>{{/}}<p>{{#option.text}}</p>">
   <options>{{validFieldTypes}}</options>
-  <value>{{#field.type}}</value>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -853,9 +837,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 ">
   <div class="history-card-header">{{if card.type === 'note'}}
     <div class="note-title-container">
-      <view name="l-identicon" class="large">
-        <user>{{#root.users_base[card.userId]}}</user>
-      </view>
+      <view name="l-identicon" class="large" user="{{#root.users_base[card.userId]}}"></view>
       <div class="story-title">Added a note</div>
       <div class="card-author">{{#root.users_base[card.userId].name}}</div>
     </div>{{else}}<span class="card-title">{{card.text}}</span>{{/}}
@@ -879,9 +861,7 @@ Delete</a>
 </ul>{{else}}
 <ul class="history-card-fields {{card.type}}-card-fields">{{if card.userId}}
   <li class="card-status">{{if card.type !== 'note'}}
-    <view name="l-identicon" class="large has-tip">
-      <user>{{#root.users_base[card.userId]}}</user>
-    </view><span class="card-author">{{#root.users_base[card.userId].name}}</span>{{/}} {{if !card.completedAt}}
+    <view name="l-identicon" class="large has-tip" user="{{#root.users_base[card.userId]}}"></view><span class="card-author">{{#root.users_base[card.userId].name}}</span>{{/}} {{if !card.completedAt}}
     <div class="card-draft-notification">In progress - feedback not yet submitted</div>{{/}}</li>{{/}} {{if card.type === 'interview'}}
   <li>{{if #root.interviews[card.interviewId] as #interview}}
     <ul class="card-interview-info">
@@ -899,9 +879,7 @@ Delete</a>
       <li class="other-interviewers has-tip" title="{{interviewerNames(#interview.interviewers, card.userId)}}">
         <view name="l-card:layouts:profile:icon-plus"></view>
         {{each #interview.interviewers as #interviewer}}{{if #interviewer.id !== card.userId}}
-        <view name="l-identicon" noTip="true">
-          <user>{{#root.users_base[#interviewer.id]}}</user>
-        </view>{{/}}{{/}}</li>{{/}}</ul>{{/}}</li>{{/}} {{each card.fields as #field}}
+        <view name="l-identicon" noTip="true" user="{{#root.users_base[#interviewer.id]}}"></view>{{/}}{{/}}</li>{{/}}</ul>{{/}}</li>{{/}} {{each card.fields as #field}}
   <li class="card-field {{#field.type}}-field {{if #field.overall}}overall{{/}}">
     <view name="l-card:fields:{{#field.type}}:show" optional="true"></view>
   </li>{{/}}</ul>{{/}}
@@ -994,20 +972,13 @@ Delete</a>
 </div>
 <div class="note-comment-box">
   <div class="{{{{unless submitButtonVisible}}fade-identicon{{/}}}}">
-    <view name="l-identicon" class="no-tip large ">
-      <user>{{#root._session.user}}</user>
-    </view>
+    <view name="l-identicon" class="no-tip large " user="{{#root._session.user}}"></view>
   </div>
   <div class="{{{{if submitButtonVisible}}expand-textarea{{/}}}}">
-    <view name="l-note-textarea" class="note-reply-input classic-input expanded" placeholder="Write a reply - @mention to email a coworker" as="comment" on-focus="showSubmitButton()" on-submit="addShareComment(card.id)">
-      <users>{{#root.users_base}}</users>
-      <value>{{pendingComment.value}}</value>
-    </view>
+    <view name="l-note-textarea" class="note-reply-input classic-input expanded" users="{{#root.users_base}}" value="{{pendingComment.value}}" placeholder="Write a reply - @mention to email a coworker" as="comment" on-focus="showSubmitButton()" on-submit="addShareComment(card.id)"></view>
   </div>
   {{if submitButtonVisible}}{{if showRating}}
-  <view name="l-score-thumbs" class="light">
-    <score>{{pendingComment.score}}</score>
-  </view>{{else}}<a class="add-rating link" href="#" on-click="toggleRating()" on-click="$preventDefault($event)">Add rating</a>{{/}}
+  <view name="l-score-thumbs" class="light" score="{{pendingComment.score}}"></view>{{else}}<a class="add-rating link" href="#" on-click="toggleRating()" on-click="$preventDefault($event)">Add rating</a>{{/}}
   <button class="submit" on-click="addShareComment(card.id)">Add note
     <small>(⌘+Enter)</small>
   </button>{{/}}</div>
@@ -1067,9 +1038,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 
 <div class="card-callout">{{if cardScoreField(card)}}{{with this as #field}}
   <view name="l-card:fields:{{#field.type}}:callout" optional="true"></view>
-  <view name="l-identicon">
-    <user>{{#root.users_base[card.userId]}}</user>
-  </view>{{/}}{{/}}</div>
+  <view name="l-identicon" user="{{#root.users_base[card.userId]}}"></view>{{/}}{{/}}</div>
 
 <!------------------------------------------------------------------------------>
 
@@ -1221,14 +1190,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
     <div class="multi-suggest-label">{{if @label}}{{@label}}{{else}}{{#item.text}}{{/}}</div>
     <div class="multi-suggest-remove" title="Remove" on-click="remove(#i,$element)"></div>
   </div>{{/}}
-  <view name="l-suggest" inherit="true" as="suggest" on-submit="submit()" on-select="select()">
-    <matchAlways>{{!@matchOnClick}}</matchAlways>
-    <options>{{options}}</options>
-    <defaultOptions>{{defaultOptions}}</defaultOptions>
-    <excludeOptions>{{selected}}</excludeOptions>
-    <sort>{{sort}}</sort>
-    <filter>{{filter}}</filter>
-  </view>
+  <view name="l-suggest" inherit="true" matchAlways="{{!@matchOnClick}}" options="{{options}}" defaultOptions="{{defaultOptions}}" excludeOptions="{{selected}}" sort="{{sort}}" filter="{{filter}}" as="suggest" on-submit="submit()" on-select="select()"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -1257,16 +1219,13 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
   {{if edit}}
   <view name="l-picker:suggest" inherit="true"></view>
   <div class="picker-close"></div>{{/}}</div>{{/}}{{if @tip}}
-<view name="l-tip" as="tip">
-  <position>{{@tipPosition}}</position>{{@tip}}</view>{{/}}
+<view name="l-tip" position="{{@tipPosition}}" as="tip">{{@tip}}</view>{{/}}
 
 <!------------------------------------------------------------------------------>
 
 <l-picker:suggest:>
 
-<view name="{{@grouped ? 'l-grouped-suggest' : 'l-suggest'}}" inherit="true" as="suggest" on-open="disableTip()" on-close="close()" on-select="select()" on-submit="submit()">
-  <options>{{options}}</options>
-</view>
+<view name="{{@grouped ? 'l-grouped-suggest' : 'l-suggest'}}" inherit="true" options="{{options}}" as="suggest" on-open="disableTip()" on-close="close()" on-select="select()" on-submit="submit()"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -1392,17 +1351,14 @@ C10.884,9.172,11.388,8.654,11.328,8.081z"></path>
 <div as="container">{{if show}}
   <div class="sheets {{@class}}">
     <div class="sheets-content" as="activeSheet">{{on active as #draft}}
-      <view name="{{types[#draft.type].content}}" optional="true">
-        <draft>{{#draft}}</draft>
-      </view>{{/}}</div>
+      <view name="{{types[#draft.type].content}}" draft="{{#draft}}" optional="true"></view>{{/}}</div>
   </div>
   <div class="sheets-title">{{each tabs as #draft}}
     <a class="sheets-tab {{if #draft === active}}active{{/}}" href="#" on-click="activate(#draft.id)" on-click="$preventDefault($event)">
       <view name="{{types[#draft.type].title}}" optional="true"></view>
     </a>{{/}} {{if more}}<a class="sheets-more dropdown-button dark btn btn-no-style" href="#" on-click="morePopup.toggle($element)" on-click="$preventDefault($event)">More
 <i class="css-icon css-icon-caret-down"></i></a>
-    <view name="l-popup" as="morePopup">
-      <class>darker has-menu has-icon {{@class}}</class>
+    <view name="l-popup" class="darker has-menu has-icon {{@class}}" as="morePopup">
       <ul>{{each more as #draft}}
         <li class="{{if #draft === active}}active{{/}} option" on-click="activate(#draft.id),morePopup.close()">
           <view name="{{types[#draft.type].title}}" optional="true"></view>
@@ -1428,11 +1384,7 @@ C10.884,9.172,11.388,8.654,11.328,8.081z"></path>
 <l-textarea-suggest:index: element="l-textarea-suggest">
 
 <textarea class="{{@class}}" placeholder="{{@placeholder}}" as="textarea" on-focus="focusUpdate()" on-blur="update()" on-keydown="_keydownTextarea($event)" on-click="update(true)">{{value}}</textarea>
-<view name="l-suggest" inherit="true" noInput="true" matchAlways="true" limit="100" as="suggest" on-select="select()">
-  <class>{{@suggestClass}}</class>
-  <value>{{suggestValue}}</value>
-  <options>{{options}}</options>
-</view>
+<view name="l-suggest" inherit="true" noInput="true" matchAlways="true" class="{{@suggestClass}}" limit="100" value="{{suggestValue}}" options="{{options}}" as="suggest" on-select="select()"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -1457,13 +1409,11 @@ C10.884,9.172,11.388,8.654,11.328,8.081z"></path>
 
 <l-user-picker:index: element="l-user-picker">
 
-<view name="l-picker" inherit="true" prepend="<view name=" l-identicon "><user>{{#result.option}}</user></view>" on-init="initPicker()" on-select="select()" on-submit="submit()">
-  <class>user-picker {{@class}}</class>
-  <value>{{value}}</value>
-  <options>{{options}}</options>{{on value}}
-  <view name="l-identicon">
-    <user>{{options[value]}}</user>
-  </view>{{/}}</view>
+<view name="l-picker" class="user-picker {{@class}}" inherit="true" value="{{value}}" options="{{options}}" on-init="initPicker()" on-select="select()" on-submit="submit()">
+  <prepend>
+    <view name="l-identicon" user="{{#result.option}}"></view>
+  </prepend>{{on value}}
+  <view name="l-identicon" user="{{options[value]}}"></view>{{/}}</view>
 
 <!------------------------------------------------------------------------------>
 
@@ -1599,9 +1549,7 @@ Email candidates
 
 <bulk-email:email-draft:>
 
-<view name="email-editor" mode="bulk" on-send="setStep(preview)" on-clear="cancel()">
-  <draft>{{draft}}</draft>
-</view>
+<view name="email-editor" mode="bulk" draft="{{draft}}" on-send="setStep(preview)" on-clear="cancel()"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -1619,13 +1567,10 @@ Email candidates
     Next</a>
   {{if preview.draft.modified}}
   <div class="email-change-message">This email has been edited.</div>{{/}}</div>
-<view name="email-editor" mode="preview" as="previewEditor" on-clear="cancel()">
-  <draft>{{preview.draft}}</draft>
-</view>
+<view name="email-editor" mode="preview" draft="{{preview.draft}}" as="previewEditor" on-clear="cancel()"></view>
 <div class="bulk-email-send-wrapper">
   <div class="link-bar right"><a class="link dark" href="#" on-click="setStep(draft)" on-click="$preventDefault($event)">Go back</a>
-    <view name="l-dropdown" buttonClass="dark-button has-icon" prompt="Delay until...">
-      <value>{{preview.draft.delay}}</value>
+    <view name="l-dropdown" buttonClass="dark-button has-icon" prompt="Delay until..." value="{{preview.draft.delay}}">
       <label>
         <view name="icon-clock"></view>{{preview.draft.delay || 'Delay until...'}}</label>
       <option value="null">Send now</option>
@@ -1666,20 +1611,17 @@ Share candidates
 {{count}}
 )</span></h2>
   <div>
-    <view name="l-multi-suggest" class="dark-suggest recipient-input" matchOnClick="true" placeholder="Recipients" label="{{#item.id}}" prepend="<view name=" l-identicon "><user>{{#result.option.user}}</user></view>" as="shareSuggest">
-      <ids>{{recipients}}</ids>
-      <options>{{userOptions}}</options>
+    <view name="l-multi-suggest" class="dark-suggest recipient-input" matchOnClick="true" ids="{{recipients}}" options="{{userOptions}}" placeholder="Recipients" as="shareSuggest">
+      <label>{{#item.id}}</label>
+      <prepend>
+        <view name="l-identicon" user="{{#result.option.user}}"></view>
+      </prepend>
     </view>
   </div>
   <div>
-    <view name="l-note-textarea" class="dark-input" placeholder="Message" as="message" on-submit="submit()">
-      <users>{{#root.users_base}}</users>
-      <value>{{message}}</value>
-    </view>
+    <view name="l-note-textarea" class="dark-input" users="{{#root.users_base}}" value="{{message}}" placeholder="Message" as="message" on-submit="submit()"></view>
   </div>{{if showScore}}
-  <view name="l-score-thumbs">
-    <score>{{score}}</score>
-  </view>{{else}}<a class="link dark add-rating" href="#" on-click="toggleScore()" on-click="$preventDefault($event)">Add rating...</a>{{/}}
+  <view name="l-score-thumbs" score="{{score}}"></view>{{else}}<a class="link dark add-rating" href="#" on-click="toggleScore()" on-click="$preventDefault($event)">Add rating...</a>{{/}}
   <div class="link-bar right"><a class="link dark" href="#" on-click="cancel()" on-click="$preventDefault($event)">Cancel</a>
     <button class="submit" on-click="submit()">Send
       <small>(
@@ -1750,11 +1692,9 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
 <view name="l-popup" class="bulk-edit-tags" as="tagMenu">
   <h4>Tags to be 
 {{if addTags}}added{{else}}removed{{/}}</h4>
-  <view name="l-multi-suggest" inherit="true" placeholder="Enter tags" class="tags" prepend="<span class=" count ">{{#result.option.count}}</span>" as="tagsSuggest" on-create="createTagsSuggest()">
-    <options>{{#root.tags}}</options>
-    <ids>{{tagIds}}</ids>
-    <filter>{{filter}}</filter>
-    <sort>{{sort}}</sort>
+  <view name="l-multi-suggest" inherit="true" placeholder="Enter tags" options="{{#root.tags}}" ids="{{tagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags" as="tagsSuggest" on-create="createTagsSuggest()">
+    <prepend><span class="count">{{#result.option.count}}</span>
+    </prepend>
   </view>
   <div class="link-bar right"><a class="bulk-toggle-mode link dark" href="#" on-click="toggleMode()" on-click="$preventDefault($event)">{{if addTags}}Remove tags instead{{else}}Add tags instead{{/}}</a>
     <button class="btn submit" title=" {{if addTags}}Add tags{{else}}Remove tags{{/}}" on-click="submit()">Submit</button>
@@ -1765,10 +1705,9 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
 
 <calendar-resource-input:index:>
 
-<view name="l-grouped-suggest" class="grouped-suggest" inherit="true" other="Other Resources" prepend="<i class=" available-{{#result.option.availableClass}} "></i>" as="suggest" on-select="select()">
-  <value>{{value}}</value>
-  <sort>{{sort}}</sort>
-  <options>{{options}}</options>
+<view name="l-grouped-suggest" class="grouped-suggest" inherit="true" value="{{value}}" other="Other Resources" sort="{{sort}}" options="{{options}}" as="suggest" on-select="select()">
+  <prepend><i class="available-{{#result.option.availableClass}}"></i>
+  </prepend>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -1949,10 +1888,7 @@ L15.059,2.824z"></path>
 {{this}}
 )</span>
 </a>{{/}}
-<view name="l-sheets" class="drafts" as="page,drafts" on-add="addDraft()" on-delete="deleteDraft()" on-open="openSheet()" on-close="closeSheet()">
-  <collection>{{drafts}}</collection>
-  <types>{{sheetTypes}}</types>
-</view>
+<view name="l-sheets" class="drafts" collection="{{drafts}}" types="{{sheetTypes}}" as="page,drafts" on-add="addDraft()" on-delete="deleteDraft()" on-open="openSheet()" on-close="closeSheet()"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -1967,11 +1903,7 @@ L15.059,2.824z"></path>
 <file-attachment:index:>
 
 <div class="link has-icon">
-  <view name="l-upload" class="fileupload" multiple="true">
-    <url>{{url('hire.files.uploadFile', {type: 'email-template', directory: @directory})}}</url>
-    <responses>{{responses}}</responses>
-    <error>{{error}}</error>
-  </view>
+  <view name="l-upload" class="fileupload" url="{{url('hire.files.uploadFile', {type: 'email-template', directory: @directory})}}" responses="{{responses}}" multiple="true" error="{{error}}"></view>
   <span class="pseudo-placeholder"><view name="file-attachment:icon-paperclip"></view>
 Attach</span>
 </div>
@@ -2025,16 +1957,13 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
   <div class="email-from">
     <label class="email-label">From:</label>
     {{on draft.fromType as #fromType}}
-    <view name="l-dropdown" class="tall-option caps-option" buttonClass="email-from-menu dark btn-no-style">
-      <value>{{#fromType}}</value>
+    <view name="l-dropdown" class="tall-option caps-option" buttonClass="email-from-menu dark btn-no-style" value="{{#fromType}}">
       <option value="user email" text="{{#root._session.user.email}}">{{#root._session.user.email}}</option>
       <option value="no-reply" text="From no-reply">From no-reply</option>
     </view>{{/}}
     <div class="email-actions">
       <div class="email-upload">
-        <view name="file-attachment" directory="uploads">
-          <fileIds>{{draft.message.fileIds}}</fileIds>
-        </view>
+        <view name="file-attachment" fileIds="{{draft.message.fileIds}}" directory="uploads"></view>
       </div>
       <view name="l-popup" class="has-menu email-template-menu" as="templateMenu">
         <ul>{{if templates.user}}
@@ -2083,8 +2012,7 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
   </div>
   {{unless mode == 'preview' || mode == 'interview'}}
   <div class="link-bar right"><a class="go-back link dark" title="Start over with email template" href="#" on-click="clear()" on-click="$preventDefault($event)">Cancel</a>
-    <view name="l-dropdown" buttonClass="dark-button has-icon" prompt="Delay until...">
-      <value>{{draft.delay}}</value>
+    <view name="l-dropdown" buttonClass="dark-button has-icon" prompt="Delay until..." value="{{draft.delay}}">
       <label>
         <view name="email-editor:icon-clock"></view>{{draft.delay || 'Delay until...'}}</label>
       <option value="null">Send now</option>
@@ -2131,65 +2059,39 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
 <filtervis:index:>
 
 <div class="filtervis-section filtervis-postings">
-  <view name="filtervis-posting">
-    <activeFacet>{{#root._page.facets.profiles.facetFields.postingIds}}</activeFacet>
-    <archiveFacet>{{#root._page.facets.profiles.facetFields.archivedPostingIds}}</archiveFacet>
-  </view>
+  <view name="filtervis-posting" activeFacet="{{#root._page.facets.profiles.facetFields.postingIds}}" archiveFacet="{{#root._page.facets.profiles.facetFields.archivedPostingIds}}"></view>
 </div>
 <div class="filtervis-section filtervis-tags">
   <h3>Tags</h3>
   <hr/>
-  <view name="filtervis-tag" tagType="tags">
-    <collection>{{#root.tags}}</collection>
-    <facet>{{#root._page.facets.profiles.facetFields.tagsExact}}</facet>
-    <watchable>{{#root._session.hasAccess.candidates}}</watchable>
-    <followedIds>{{#root._session.user.followedTagIds}}</followedIds>
-    <renderQuery>{{#root.$render.query}}</renderQuery>
-  </view>
+  <view name="filtervis-tag" tagType="tags" collection="{{#root.tags}}" facet="{{#root._page.facets.profiles.facetFields.tagsExact}}" watchable="{{#root._session.hasAccess.candidates}}" followedIds="{{#root._session.user.followedTagIds}}" renderQuery="{{#root.$render.query}}"></view>
 </div>{{if #root.$render.query.onlyArchived}}
 <div class="filtervis-section filtervis-postings">
   <h3>Stages</h3>
   <hr/>
-  <view name="filtervis-stage">
-    <collection>{{#root.stages}}</collection>
-    <renderQuery>{{#root.$render.query}}</renderQuery>
-  </view>
+  <view name="filtervis-stage" collection="{{#root.stages}}" renderQuery="{{#root.$render.query}}"></view>
 </div>{{/}}
 <div class="filtervis-section filtervis-postings">
   <h3>Last interaction</h3>
   <hr/>
-  <view name="filtervis-interaction">
-    <facet>{{#root._page.facets.profiles.facetFields.lastStoryAt}}</facet>
-    <renderQuery>{{#root.$render.query}}</renderQuery>
-  </view>
+  <view name="filtervis-interaction" facet="{{#root._page.facets.profiles.facetFields.lastStoryAt}}" renderQuery="{{#root.$render.query}}"></view>
 </div>
 <div class="filtervis-section chart">
   <div class="top-five-unit">
     <h4>Sources</h4>
-    <view name="filtervis-tag" tagType="sources">
-      <collection>{{#root.sources}}</collection>
-      <facet>{{#root._page.facets.profiles.facetFields.sourcesExact}}</facet>
-      <renderQuery>{{#root.$render.query}}</renderQuery>
-    </view>
+    <view name="filtervis-tag" tagType="sources" collection="{{#root.sources}}" facet="{{#root._page.facets.profiles.facetFields.sourcesExact}}" renderQuery="{{#root.$render.query}}"></view>
   </div>
 </div>
 <div class="filtervis-section chart">
   <div class="top-five-unit">
     <h4>Owners</h4>
-    <view name="filtervis-owner">
-      <collection>{{#root.users_base}}</collection>
-      <facet>{{#root._page.facets.profiles.facetFields.faceId}}</facet>
-      <renderQuery>{{#root.$render.query}}</renderQuery>
-    </view>
+    <view name="filtervis-owner" collection="{{#root.users_base}}" facet="{{#root._page.facets.profiles.facetFields.faceId}}" renderQuery="{{#root.$render.query}}"></view>
   </div>
 </div>
 <div class="filtervis-section chart">
   <div class="top-five-unit">
     <h4>Top companies</h4>
-    <view name="filtervis-company">
-      <facet>{{#root._page.facets.profiles.facetFields.orgExact}}</facet>
-      <renderQuery>{{#root.$render.query}}</renderQuery>
-    </view>
+    <view name="filtervis-company" facet="{{#root._page.facets.profiles.facetFields.orgExact}}" renderQuery="{{#root.$render.query}}"></view>
   </div>
 </div>
 
@@ -2205,9 +2107,7 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
       </li>{{/}}</ul>
   </div>
   <div class="search">
-    <view name="l-picker" type="input" class="topfive-picker" on-select="select()">
-      <options>{{pickerOptions}}</options>
-    </view>
+    <view name="l-picker" type="input" options="{{pickerOptions}}" class="topfive-picker" on-select="select()"></view>
   </div>
 </div>
 
@@ -2234,9 +2134,7 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
       </li>{{/}}</ul>
   </div>
   <div class="search">
-    <view name="l-user-picker" type="input" class="topfive-picker" on-select="select()">
-      <options>{{#root.users_base}}</options>
-    </view>
+    <view name="l-user-picker" type="input" options="{{#root.users_base}}" class="topfive-picker" on-select="select()"></view>
   </div>
 </div>
 
@@ -2439,70 +2337,54 @@ C10,6.671,9.328,6,8.5,6C7.671,6,7,6.671,7,7.5S7.671,9,8.5,9C9.328,9,10,8.329,10,
     <tr>
       <td class="">Interviewer</td>
       <td>
-        <view name="l-multi-suggest" matchOnClick="true" placeholder="Add interviewer" class="dark-suggest" label="{{#item.user.name || #item.text}}" prepend="<view name=" l-identicon "><user>{{#result.option.user}}</user></view>" on-init="initMultiUser()">
-          <ids>{{working.emails}}</ids>
-          <options>{{userOptions}}</options>
+        <view name="l-multi-suggest" matchOnClick="true" ids="{{working.emails}}" options="{{userOptions}}" placeholder="Add interviewer" class="dark-suggest" on-init="initMultiUser()">
+          <label>{{#item.user.name || #item.text}}</label>
+          <prepend>
+            <view name="l-identicon" user="{{#result.option.user}}"></view>
+          </prepend>
         </view>
       </td>
     </tr>
     <tr>
       <td>Date and time</td>
       <td>
-        <view name="select-date-timezone" on-changeTimezone="changeTimezone()">
-          <date>{{working.date}}</date>
-          <timezone>{{working.timezoneName}}</timezone>
-          <recipients>{{working.recipients}}</recipients>
-        </view>
-        <view name="l-time-input" tabindex="2">
-          <timezone>{{working.timezoneName}}</timezone>
-          <date>{{working.date}}</date>
-        </view>
+        <view name="select-date-timezone" date="{{working.date}}" timezone="{{working.timezoneName}}" recipients="{{working.recipients}}" on-changeTimezone="changeTimezone()"></view>
+        <view name="l-time-input" tabindex="2" timezone="{{working.timezoneName}}" date="{{working.date}}"></view>
       </td>
     </tr>
     <tr>
       <td>Duration</td>
       <td class="dates">
-        <view name="l-duration-input" inputClass="dark-input">
-          <minutes>{{working.duration}}</minutes>
-        </view>
+        <view name="l-duration-input" inputClass="dark-input" minutes="{{working.duration}}"></view>
       </td>
     </tr>
     <tr>
       <td>Location</td>
       <td class="">
-        <view name="calendar-resource-input" inputClass="dark-input" class="grouped-suggest" tabindex="4" placeholder="Location">
-          <calendarResources>{{calendarResources}}</calendarResources>
-          <freeBusy>{{activeFreeBusy}}</freeBusy>
-          <date>{{working.date}}</date>
-          <duration>{{working.duration}}</duration>
-          <end>{{timeEnd}}</end>
-          <value>{{working.location}}</value>
-        </view>
+        <view name="calendar-resource-input" inputClass="dark-input" class="grouped-suggest" tabindex="4" calendarResources="{{calendarResources}}" freeBusy="{{activeFreeBusy}}" date="{{working.date}}" duration="{{working.duration}}" end="{{timeEnd}}" value="{{working.location}}"
+        placeholder="Location"></view>
       </td>
     </tr>
     <tr>
       <td>Calendar</td>
       <td>{{if hasAccessToCalendar(calendarList,working.calendarId)}}
-        <view name="l-dropdown" class="choose-calendar-dropdown" buttonClass="dark-button" prompt="Choose calendar">
+        <view name="l-dropdown" class="choose-calendar-dropdown" buttonClass="dark-button" value="{{working.calendarId}}" prompt="Choose calendar">
           <options>{{calendarList}}</options>
-          <value>{{working.calendarId}}</value>
         </view>{{else}}<span class="current-calendar">{{working.calendarId}}</span>{{/}}</td>
     </tr>
     <tr>
       <td>Feedback form</td>
       <td>
-        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button" prompt="No feedback">
+        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button" value="{{working.cardTemplateId}}" prompt="No feedback">
           <options>{{cardTemplates}}</options>
-          <value>{{working.cardTemplateId}}</value>
         </view>
       </td>
     </tr>
     <tr>
       <td>Remind</td>
       <td>
-        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button reminder-options">
+        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button reminder-options" value="{{working.feedback}}">
           <options>{{feedbackOptions}}</options>
-          <value>{{working.feedback}}</value>
         </view>
       </td>
     </tr>
@@ -2743,16 +2625,9 @@ Snoozed</span></a>
 
 <profile-flyover:index:>
 
-<view name="flyover" as="flyover">
-  <nav>{{nav}}</nav>{{if #root._page.profile}}{{if showSummary}}
-  <view name="profile-summary" as="profileSummary">
-    <profile>{{#root._page.profile}}</profile>
-    <hideProfile>{{hideProfile}}</hideProfile>
-  </view>{{/}}{{if showHistory}}
-  <view name="profile-history" as="profileHistory">
-    <profile>{{#root._page.profile}}</profile>
-    <hideProfile>{{hideProfile}}</hideProfile>
-  </view>{{/}}{{/}}</view>
+<view name="flyover" nav="{{nav}}" as="flyover">{{if #root._page.profile}}{{if showSummary}}
+  <view name="profile-summary" profile="{{#root._page.profile}}" hideProfile="{{hideProfile}}" as="profileSummary"></view>{{/}}{{if showHistory}}
+  <view name="profile-history" profile="{{#root._page.profile}}" hideProfile="{{hideProfile}}" as="profileHistory"></view>{{/}}{{/}}</view>
 
 <!------------------------------------------------------------------------------>
 
@@ -2863,15 +2738,8 @@ C15.007,5.106,14.994,4.488,14.607,4.102z"></path>
       </view>
     </div>
     <div class="history-content limited-width">
-      <view name="score-summary">
-        <profile>{{profile}}</profile>
-      </view>
-      <view name="profile-stories" as="profileStories">
-        <itemList>{{itemList}}</itemList>
-        <profile>{{profile}}</profile>
-        <interviewsByDate>{{interviewsByDate}}</interviewsByDate>
-        <emailsByThreadId>{{emailsByThreadId}}</emailsByThreadId>
-      </view>
+      <view name="score-summary" profile="{{profile}}"></view>
+      <view name="profile-stories" itemList="{{itemList}}" profile="{{profile}}" interviewsByDate="{{interviewsByDate}}" emailsByThreadId="{{emailsByThreadId}}" as="profileStories"></view>
     </div>
   </div>
 </div>{{/}}
@@ -2942,9 +2810,7 @@ C15.007,5.106,14.994,4.488,14.607,4.102z"></path>
       <view name="icon-single-caret-right"></view>
     </a>{{else}}<span class="list-date has-tip" title="Entered stage: {{#result.advancedDate}}
 Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span>{{/}} {{on #result.owner.id}}
-    <view name="l-identicon" class="has-tip">
-      <user>{{#result.owner}}</user>
-    </view>{{/}}</td>
+    <view name="l-identicon" user="{{#result.owner}}" class="has-tip"></view>{{/}}</td>
 </tr>
 
 <!------------------------------------------------------------------------------>
@@ -3050,9 +2916,7 @@ Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span
       <view name="icon-single-caret-right"></view>
     </a>{{else}}<span class="list-date has-tip" title="Entered stage: {{#result.advancedDate}}
 Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span>{{/}} {{on #result.owner.id}}
-    <view name="l-identicon" class="has-tip">
-      <user>{{#result.owner}}</user>
-    </view>{{/}}</td>
+    <view name="l-identicon" user="{{#result.owner}}" class="has-tip"></view>{{/}}</td>
 </tr>
 
 <!------------------------------------------------------------------------------>
@@ -3139,9 +3003,7 @@ Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span
       <view name="icon-single-caret-right"></view>
     </a>{{else}}<span class="list-date has-tip" title="Entered stage: {{#result.advancedDate}}
 Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span>{{/}} {{on #result.owner.id}}
-    <view name="l-identicon" class="has-tip">
-      <user>{{#result.owner}}</user>
-    </view>{{/}}</td>
+    <view name="l-identicon" user="{{#result.owner}}" class="has-tip"></view>{{/}}</td>
 </tr>
 
 <!------------------------------------------------------------------------------>
@@ -3203,19 +3065,13 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
   <view name="profile-summary:hired-profile-label"></view>{{/}}
   <view name="profile-summary:name"></view>
   <div class="content-section call-to-actions">
-    <view name="profile-cta">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-cta" profile="{{profile}}"></view>
   </div>
   <div class="content-section reactions">
-    <view name="profile-note" as="profileNote">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-note" profile="{{profile}}" as="profileNote"></view>
   </div>
   <div class="content-section">
-    <view name="profile-files">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-files" profile="{{profile}}"></view>
   </div>
   <div class="content-section">
     <div class="spaced-divider"></div>
@@ -3223,38 +3079,30 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
   <div class="content-section">
     <div class="indented-icon-column content-sub-section">
       <view name="profile-summary:icon-postings" class="icon-column"></view>
-      <view name="profile-applications">
-        <profile>{{profile}}</profile>
-      </view>
+      <view name="profile-applications" profile="{{profile}}"></view>
     </div>
   </div>
   <div class="content-section">
     <div class="spaced-divider"></div>
   </div>
   <div class="content-section">
-    <view name="profile-tags-sources">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-tags-sources" profile="{{profile}}"></view>
   </div>
   <div class="content-section">
     <div class="spaced-divider"></div>
   </div>
   <div class="content-section">
-    <view name="profile-contact">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-contact" profile="{{profile}}"></view>
   </div>
   <div class="content-section">
-    <view name="profile-experience">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-experience" profile="{{profile}}"></view>
   </div>
   <div class="content-section">
-    <view name="profile-education">
-      <profile>{{profile}}</profile>
-    </view>
+    <view name="profile-education" profile="{{profile}}"></view>
   </div>{{/}}</div>
-<view name="l-popup" within="true" class="card-popup" content="<view name=" l-card " layout="popup " autofocus="true " on-submit="cardSubmit(data.cardId) "><card>{{#root.profile_cards[data.cardId]}}</card></view>" as="cardPopup"></view>
+<view name="l-popup" within="true" class="card-popup" as="cardPopup">
+  <view name="l-card" card="{{#root.profile_cards[data.cardId]}}" layout="popup" autofocus="true" on-submit="cardSubmit(data.cardId)"></view>
+</view>
 
 <!------------------------------------------------------------------------------>
 
@@ -3287,10 +3135,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
       </tr>
     </tbody>
   </table>
-  <view name="l-user-picker" class="compact" tip="Change owner" tipPosition="bottom-left">
-    <value>{{profile.faceId}}</value>
-    <options>{{#root.users_base}}</options>
-  </view>
+  <view name="l-user-picker" class="compact" tip="Change owner" tipPosition="bottom-left" value="{{profile.faceId}}" options="{{#root.users_base}}"></view>
 </div>
 <view name="l-popup" class="has-menu darker caps-option" as="addFormMenu">
   <ul class="popup-menu">{{each formTemplates as #template}}
@@ -3298,9 +3143,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
     </li>{{/}}</ul>
 </view>
 <view name="l-popup" class="has-menu tall-option darker" focus=".snooze-form textarea" as="snoozeMenu">
-  <view name="profile-snooze">
-    <profile>{{profile}}</profile>
-  </view>
+  <view name="profile-snooze" profile="{{profile}}"></view>
 </view>
 <view name="l-popup" class="has-menu tall-option darker has-icon caps-option" as="settingsMenu">
   <ul class="popup-menu">
@@ -3322,9 +3165,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
   </ul>
 </view>
 <view name="l-popup" as="exportFeedbackMenu">
-  <view name="profile-export-feedback">
-    <profile>{{profile}}</profile>
-  </view>
+  <view name="profile-export-feedback" profile="{{profile}}"></view>
 </view>
 <view name="l-popup" class="darker" as="profileDeletePopup">
   <p class="large-font">Are you sure?</p>
@@ -3369,9 +3210,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <profile-summary:hidden:>
 
 <div class="above-name no-access">
-  <view name="l-identicon">
-    <user>{{#root.users_base[profile.faceId]}}</user>
-  </view>
+  <view name="l-identicon" user="{{#root.users_base[profile.faceId]}}"></view>
   <table class="above-name-table">
     <tbody>
       <tr>
@@ -3603,9 +3442,7 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
     <tr>
       <td class="from">{{if #email.from.userId}}
         <div class="person-picture">
-          <view name="l-identicon">
-            <user>{{#root.users_base[#email.from.userId]}}</user>
-          </view>
+          <view name="l-identicon" user="{{#root.users_base[#email.from.userId]}}"></view>
         </div>{{else}}
         <div class="person-picture" style="background-image: url({{#email.from.picture}}); background-size: 27px 27px;"></div>{{/}}
         <div class="person-details">
@@ -3824,7 +3661,7 @@ C13.143,11,13.143,10.404,13.143,10.1z M10,14H6c0,1.104,0.896,2,2,2C9.104,16,10,1
         <view name="interview-panel:icon-calendar"></view>{{/}}</div>
       <div class="history-interview-title"><span class="dates">{{formatTime(panel.date, panel.timezone, 'dayDate')}}
  
-<view name="partials:timezone"><timezone>{{panel.timezone}}</timezone></view></span>
+<view name="partials:timezone" timezone="{{panel.timezone}}"></view></span>
         -  {{#root.stages[panel.stageId].text}}
       </div>
       <span class="panel-info"><span class="story-delete"><a class="story-action link has-icon" href="#" on-click="cancelMenu.toggle($element,bottom-right)" on-click="$preventDefault($event)"><view name="icon-delete"></view>
@@ -3838,7 +3675,9 @@ Delete events</a></span>
     </table>
   </div>
 </div>
-<view name="l-popup" within="true" class="has-menu has-icon tall-option caps-option darker" content="<view name=" interview-panel:interview-panel-menu "><interview>{{data}}</interview></view>" as="interviewMenu"></view>
+<view name="l-popup" within="true" class="has-menu has-icon tall-option caps-option darker" as="interviewMenu">
+  <view name="interview-panel:interview-panel-menu" interview="{{data}}"></view>
+</view>
 <view name="l-popup" class="darker" as="cancelMenu">
   <p class="large-font">This will delete all interviews in this panel. Are you sure?</p>
   <div class="link-bar right"><a class="link dark" href="#" on-click="cancelMenu.close()" on-click="$preventDefault($event)">Cancel</a>
@@ -3854,10 +3693,8 @@ Delete events</a></span>
   <td class="history-interview-summary-interviewers">{{each #interview.interviewers as #interviewer}}<span class="history-interview-interviewer comma-separated {{if #interviewer.status === 'dismissed'}}interview-dismissed{{/}}">{{#interviewer.name}}</span>{{/}}</td>
   <td class="history-interview-summary-date dates">{{if #interview.gcalEvent.htmlLink}}<span class="cta"><a class="calendar-link has-tip" href="{{this}}" target="_blank" title="View calendar event">{{timeRange(#interview.date, #interview.duration, #interview.timezoneName || #root._session.timezoneName)}}
  
-<view name="partials:timezone"><timezone>{{#interview.timezoneName}}</timezone></view></a></span>{{else}}{{timeRange(#interview.date, #interview.duration, #interview.timezoneName || #root._session.timezoneName)}}
-    <view name="partials:timezone">
-      <timezone>{{#interview.timezoneName}}</timezone>
-    </view>{{/}}</td>
+<view name="partials:timezone" timezone="{{#interview.timezoneName}}"></view></a></span>{{else}}{{timeRange(#interview.date, #interview.duration, #interview.timezoneName || #root._session.timezoneName)}}
+    <view name="partials:timezone" timezone="{{#interview.timezoneName}}"></view>{{/}}</td>
   <td class="history-interview-summary-room"><span>{{#interview.location}}</span>
   </td>
   <td class="history-interview-controls id-{{#interview.id}}">
@@ -3876,9 +3713,7 @@ Delete events</a></span>
 
 <tr class="interview-reschedule-container">
   <td colspan="4">
-    <view name="interview-reschedule" class="history-interview">
-      <interview>{{#interview}}</interview>
-    </view>
+    <view name="interview-reschedule" class="history-interview" interview="{{#interview}}"></view>
   </td>
 </tr>
 
@@ -3989,10 +3824,9 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
 </div>{{else}}
 <div class="stage-active">
   <div class="stage-cell">
-    <view name="l-dropdown" class="tall-option caps-option stage-dropdown" buttonClass="btn-large-secondary archive-button stage-dropdown-btn" optionContent="{{if #option.action}}{{#option.text}}<view name=" profile-applications:icon-hire
+    <view name="l-dropdown" class="tall-option caps-option stage-dropdown" buttonClass="btn-large-secondary archive-button stage-dropdown-btn" value="{{profile.stageId}}" optionContent="{{if #option.action}}{{#option.text}}<view name=" profile-applications:icon-hire
     "></view>{{else}}{{#option.text}}{{/}}" on-select="onStageDropdownSelect()">
       <options>{{stageOptions}}</options>
-      <value>{{profile.stageId}}</value>
     </view>
   </div>
   <div class="archive-cell">
@@ -4041,9 +3875,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
             <a class="link dark" href="#" on-click="closePopup()" on-click="$preventDefault($event)">Cancel</a>
           </div>
         </view>
-        <view name="l-identicon" class="has-tip">
-          <user>{{#root.users_base[#application.ownerId]}}</user>
-        </view>
+        <view name="l-identicon" user="{{#root.users_base[#application.ownerId]}}" class="has-tip"></view>
         <button data-application-id="{{#application.id}}" class="btn btn-invisible icon-only archive" title="Archive this application" on-click="archiveReasonMenu.open($element,bottom-right)">
           <view name="profile-applications:icon-archive"></view>
         </button>
@@ -4059,9 +3891,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
     <a class="link dark" href="#" on-click="closePopup()" on-click="$preventDefault($event)">Cancel</a>
   </div>
 </view>{{/}}
-<view name="l-posting-picker" class="grouped-suggest" linkClass="link has-icon add-application-link" type="link" placeholder="Search" on-select="addApplication()">
-  <postings>{{#root.postings_base}}</postings>
-  <tags>{{#root.tags}}</tags>
+<view name="l-posting-picker" class="grouped-suggest" linkClass="link has-icon add-application-link" type="link" postings="{{#root.postings_base}}" tags="{{#root.tags}}" placeholder="Search" on-select="addApplication()">
   <view name="profile-applications:icon-plus"></view>Add job application</view>
 
 <!------------------------------------------------------------------------------>
@@ -4165,8 +3995,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
       <div>
         <div class="editable-item has-dropdown">
           <div>
-            <view name="l-dropdown" buttonClass="right-float btn-invisible" prompt="TYPE">
-              <value>{{#phone.type}}</value>
+            <view name="l-dropdown" buttonClass="right-float btn-invisible" prompt="TYPE" value="{{#phone.type}}">
               <options>{{phoneOptions}}</options>
             </view>
             <div class="around-input">
@@ -4191,8 +4020,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
   <div>
     <div class="editable-item has-dropdown">
       <div>
-        <view name="l-dropdown" buttonClass="btn-invisible" prompt="TYPE">
-          <value>{{profile.phones[0].type}}</value>
+        <view name="l-dropdown" buttonClass="btn-invisible" prompt="TYPE" value="{{profile.phones[0].type}}">
           <options>{{phoneOptions}}</options>
         </view>
         <div class="around-input">
@@ -4217,8 +4045,7 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
   <div>
     <div class="editable-item has-dropdown">
       <div>
-        <view name="l-dropdown" buttonClass="btn-invisible" prompt="TYPE">
-          <value>{{newType}}</value>
+        <view name="l-dropdown" buttonClass="btn-invisible" prompt="TYPE" value="{{newType}}">
           <options>{{phoneOptions}}</options>
         </view>
         <div class="around-input">
@@ -4332,14 +4159,8 @@ c0.656-0.067,1.132-0.653,1.065-1.308C14.795,8.666,14.211,8.189,13.557,8.255z"></
 <profile-date-edit:index:>
 
 <div class="resume-time">
-  <view name="l-picker" class="resume-time-picker" clearable="true">
-    <value>{{stringMonth}}</value>
-    <options>{{months}}</options>
-  </view>
-  <view name="l-picker" class="resume-time-picker year" clearable="true">
-    <value>{{stringYear}}</value>
-    <options>{{years}}</options>
-  </view>
+  <view name="l-picker" class="resume-time-picker" value="{{stringMonth}}" options="{{months}}" clearable="true"></view>
+  <view name="l-picker" class="resume-time-picker year" value="{{stringYear}}" options="{{years}}" clearable="true"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -4398,9 +4219,9 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
   <input class="classic-input" type="text" value="{{#school.org}}" placeholder="School name" />
   <input class="classic-input" type="text" value="{{#school.degree}}" placeholder="Degree" />
   <input class="classic-input" type="text" value="{{#school.field}}" placeholder="Field" />
-  <h5 class="schoolTime"><view name="profile-date-edit"><month>{{#school.start.month}}</month><year>{{#school.start.year}}</year></view>
+  <h5 class="schoolTime"><view name="profile-date-edit" month="{{#school.start.month}}" year="{{#school.start.year}}"></view>
 <span class="resume-time-to">  to</span>
-{{if #school.end}}<br/><view name="profile-date-edit"><month>{{#school.end.month}}</month><year>{{#school.end.year}}</year></view><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,present)" on-click="$preventDefault($event)">To present</a>{{else}}<span class="resume-time-to"> present</span><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,date)" on-click="$preventDefault($event)">To date</a>{{/}}
+{{if #school.end}}<br/><view name="profile-date-edit" month="{{#school.end.month}}" year="{{#school.end.year}}"></view><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,present)" on-click="$preventDefault($event)">To present</a>{{else}}<span class="resume-time-to"> present</span><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,date)" on-click="$preventDefault($event)">To date</a>{{/}}
 <input class="classic-input" type="text" value="{{#school.location.name}}" placeholder="Location"/></h5>
   <input class="classic-input" type="text" value="{{#school.gpa}}" placeholder="GPA" />
   <textarea class="classic-input" placeholder="Summary">{{#school.summary}}</textarea>
@@ -4458,9 +4279,9 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
   </div>
   <input class="classic-input" type="text" value="{{#position.title}}" placeholder="Title" />
   <input class="classic-input" type="text" value="{{#position.org}}" placeholder="Organization" />
-  <h5 class="positionTime"><view name="profile-date-edit"><month>{{#position.start.month}}</month><year>{{#position.start.year}}</year></view>
+  <h5 class="positionTime"><view name="profile-date-edit" month="{{#position.start.month}}" year="{{#position.start.year}}"></view>
 <span class="resume-time-to">  to</span>
-{{if #position.end}}<br/><view name="profile-date-edit"><month>{{#position.end.month}}</month><year>{{#position.end.year}}</year></view><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,present)" on-click="$preventDefault($event)">To present</a>{{else}}<span class="resume-time-to"> present</span><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,date)" on-click="$preventDefault($event)">To date</a>{{/}}
+{{if #position.end}}<br/><view name="profile-date-edit" month="{{#position.end.month}}" year="{{#position.end.year}}"></view><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,present)" on-click="$preventDefault($event)">To present</a>{{else}}<span class="resume-time-to"> present</span><a class="resume-time-end-toggle label" href="#" on-click="setEnd(#i,date)" on-click="$preventDefault($event)">To date</a>{{/}}
 <input class="classic-input" type="text" value="{{#position.location.name}}" placeholder="Location"/></h5>
   <textarea class="classic-input" placeholder="Summary">{{#position.summary}}</textarea>
 </div>
@@ -4511,9 +4332,11 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
   </div>{{/}}
   <div class="export-feedback-form">
     <textarea class="dark-input" placeholder="Optional message...">{{feedbackMessage}}</textarea>
-    <view name="l-multi-suggest" matchOnClick="true" placeholder="Send to..." class="bulk-recipient dark-suggest" label="{{#item.user.name || #item.text}}" prepend="<view name=" l-identicon "><user>{{#result.option.user}}</user></view>" on-init="initMultiUser()">
-      <ids>{{recipientsList}}</ids>
-      <options>{{userOptions}}</options>
+    <view name="l-multi-suggest" matchOnClick="true" ids="{{recipientsList}}" options="{{userOptions}}" placeholder="Send to..." class="bulk-recipient dark-suggest" on-init="initMultiUser()">
+      <label>{{#item.user.name || #item.text}}</label>
+      <prepend>
+        <view name="l-identicon" user="{{#result.option.user}}"></view>
+      </prepend>
     </view>
   </div>
   <div class="link-bar right">
@@ -4604,11 +4427,7 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
 <profile-files:upload:>
 
 <div class="link has-icon">
-  <view name="l-upload" class="fileupload" multiple="true">
-    <url>{{url('hire.files.uploadProfile', {accountId: #root._session.accountId, userId: #root._session.userId, profileId: profile.id})}}</url>
-    <files>{{pendingFiles}}</files>
-    <responses>{{pendingImports}}</responses>
-  </view>
+  <view name="l-upload" class="fileupload" url="{{url('hire.files.uploadProfile', {accountId: #root._session.accountId, userId: #root._session.userId, profileId: profile.id})}}" files="{{pendingFiles}}" responses="{{pendingImports}}" multiple="true"></view>
   <span class="pseudo-placeholder" style="pointer-events:none"><view name="profile-files:icon-plus"></view>
 Upload a resume or file</span>
 </div>
@@ -4647,13 +4466,8 @@ Upload a resume or file</span>
     {{value || 'Add note'}}</div>
 </div>
 <view name="l-popup" class="profile-note-popup" focus="textarea" position="replace" as="notePopup">
-  <view name="l-note-textarea" class="profile-note-textarea active" placeholder="Add note - @mention to email a coworker" as="noteTextarea" on-submit="submit()">
-    <users>{{#root.users_base}}</users>
-    <value>{{value}}</value>
-  </view>
-  <view name="l-score-thumbs">
-    <score>{{score}}</score>
-  </view>
+  <view name="l-note-textarea" class="profile-note-textarea active" users="{{#root.users_base}}" value="{{value}}" placeholder="Add note - @mention to email a coworker" as="noteTextarea" on-submit="submit()"></view>
+  <view name="l-score-thumbs" score="{{score}}"></view>
   <div class="link-bar right"><a class="link dark" href="#" on-click="reset()" on-click="$preventDefault($event)">Cancel</a>
     <button class="submit add-note-submit" on-click="submit()">Add note
       <small>(⌘+Enter)</small>
@@ -4716,9 +4530,11 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
 
 <div class="schedule-screen schedule-screen-choose {{screenClass('choose', #draft.data.screen)}}">
   <div class="schedule-assign {{if showIframe}}show-iframe{{/}}">
-    <view name="l-multi-suggest" matchOnClick="true" placeholder="Add interviewer" class="show-delete" label="{{#item.user.name || #item.text}}" prepend="<view name=" l-identicon "><user>{{#result.option.user}}</user></view>" on-init="initMultiUser()">
-      <ids>{{#draft.data.recipientsList}}</ids>
-      <options>{{userOptions}}</options>
+    <view name="l-multi-suggest" matchOnClick="true" ids="{{#draft.data.recipientsList}}" options="{{userOptions}}" placeholder="Add interviewer" class="show-delete" on-init="initMultiUser()">
+      <label>{{#item.user.name || #item.text}}</label>
+      <prepend>
+        <view name="l-identicon" user="{{#result.option.user}}"></view>
+      </prepend>
     </view>
   </div>
   {{if showIframe}}
@@ -4746,11 +4562,7 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
 <profile-schedule:schedule-date:>
 
 <div class="schedule-date">
-  <view name="select-date-timezone" on-changeTimezone="changeTimezone()" on-changeDate="changeDate()">
-    <date>{{#draft.data.date}}</date>
-    <timezone>{{#draft.data.timezone}}</timezone>
-    <recipients>{{recipients}}</recipients>
-  </view>
+  <view name="select-date-timezone" date="{{#draft.data.date}}" timezone="{{#draft.data.timezone}}" recipients="{{recipients}}" on-changeTimezone="changeTimezone()" on-changeDate="changeDate()"></view>
   <div class="schedule-calendar-buttons">
     <div class="button-group">
       <button class="sub-week dark-button icon-only has-tip" title="Back one week" on-click="subWeek()">
@@ -4786,9 +4598,8 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
     <view name="icon-plus"></view>
     Add another</a>
   <div class="schedule-select-calendar">{{if calendarList}}Add to calendar
-    <view name="l-dropdown" name="l-dropdown" tabindex="5" class="darker" prompt="Choose calendar" buttonClass="dark btn-no-style">
+    <view name="l-dropdown" name="l-dropdown" tabindex="5" class="darker" prompt="Choose calendar" buttonClass="dark btn-no-style" value="{{#draft.data.calendarId}}">
       <options>{{calendarList}}</options>
-      <value>{{#draft.data.calendarId}}</value>
     </view>{{else}}{{/}}</div>
 </div>
 
@@ -4798,36 +4609,26 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
 
 <tr class="schedule-slot">
   <td class="schedule-slot-assign">
-    <view name="l-multi-suggest" tabindex="1" placeholder="Add interviewer" class="dark-suggest show-delete" label="{{#item.user.name || #item.text}}" prepend="<view name=" l-identicon "><user>{{#result.option.user}}</user></view>" on-init="initMultiUser()">
-      <ids>{{#slot.emails}}</ids>
-      <options>{{userOptions}}</options>
+    <view name="l-multi-suggest" tabindex="1" ids="{{#slot.emails}}" options="{{userOptions}}" placeholder="Add interviewer" class="dark-suggest show-delete" on-init="initMultiUser()">
+      <label>{{#item.user.name || #item.text}}</label>
+      <prepend>
+        <view name="l-identicon" user="{{#result.option.user}}"></view>
+      </prepend>
     </view>
   </td>
   <td class="schedule-slot-time">
     <div class="schedule-slot-input-wrap">
-      <view name="l-time-input" tabindex="2">
-        <timezone>{{timezone}}</timezone>
-        <date>{{#slot.date}}</date>
-      </view>
+      <view name="l-time-input" tabindex="2" timezone="{{timezone}}" date="{{#slot.date}}"></view>
     </div>
   </td>
   <td class="schedule-slot-duration">
     <div class="schedule-slot-input-wrap">
-      <view name="l-duration-input" tabindex="3">
-        <minutes>{{#slot.duration}}</minutes>
-      </view>
+      <view name="l-duration-input" tabindex="3" minutes="{{#slot.duration}}"></view>
     </div>
   </td>
   <td class="schedule-slot-location">
     <div class="schedule-slot-input-wrap">
-      <view name="calendar-resource-input" tabindex="4" placeholder="Location" on-select="selectLocation(#slotIndex)">
-        <calendarResources>{{calendarResources}}</calendarResources>
-        <freeBusy>{{activeFreeBusy}}</freeBusy>
-        <date>{{#slot.date}}</date>
-        <duration>{{#slot.duration}}</duration>
-        <end>{{slotsEnd}}</end>
-        <value>{{#slot.location}}</value>
-      </view>
+      <view name="calendar-resource-input" tabindex="4" calendarResources="{{calendarResources}}" freeBusy="{{activeFreeBusy}}" date="{{#slot.date}}" duration="{{#slot.duration}}" end="{{slotsEnd}}" value="{{#slot.location}}" placeholder="Location" on-select="selectLocation(#slotIndex)"></view>
     </div>
   </td>
   <td class="schedule-slot-remove">
@@ -4875,9 +4676,8 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
 <ul class="scheduling-options">{{if resumeOptions}}
   <li class="scheduling-option">
     <div>
-      <view name="l-dropdown">
+      <view name="l-dropdown" value="{{#draft.data.details.resume}}">
         <options>{{resumeOptions}}</options>
-        <value>{{#draft.data.details.resume}}</value>
       </view>
     </div>
     <div class="scheduling-option-title">Resume</div>
@@ -4885,9 +4685,8 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
   <li class="scheduling-option ">
     <div class="scheduling-option-title">Feedback form</div>
     <div>
-      <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option" prompt="No feedback">
+      <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option" value="{{#draft.data.details.cardTemplateId}}" prompt="No feedback">
         <options>{{cardTemplates}}</options>
-        <value>{{#draft.data.details.cardTemplateId}}</value>
       </view>
     </div>
   </li>
@@ -4896,9 +4695,8 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
       <span class="what-is-this dark has-tip" title="Sends emails to each interviewer, reminding them to complete the feedback form about the candidate.">[?]</span>
     </div>
     <div>
-      <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option">
+      <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option" value="{{#draft.data.details.feedback}}">
         <options>{{feedbackOptions}}</options>
-        <value>{{#draft.data.details.feedback}}</value>
       </view>
     </div>
   </li>
@@ -4937,9 +4735,8 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
   {{with notifyDateText(#draft.data.interviewSlots[0].date, slotsEnd) as #time}}
   <view name="profile-schedule:formatted-time-range"></view>{{/}}</div>
 <div class="message-option">{{if calendarList}}<span class="option-label">Calendar</span>
-  <view name="l-dropdown" buttonClass="dark btn-no-style" class="caps-option" prompt="Choose calendar">
+  <view name="l-dropdown" buttonClass="dark btn-no-style" class="caps-option" value="{{#draft.data.details.invite.calendarId}}" prompt="Choose calendar">
     <options>{{calendarList}}</options>
-    <value>{{#draft.data.details.invite.calendarId}}</value>
   </view>{{else}}{{/}}</div>
 <textarea class="dark-input" placeholder="Event message" as="notifyInviteBody">{{#draft.data.details.invite.description}}</textarea>
 
@@ -4947,9 +4744,7 @@ Added note <span class="note-snippet">{{#notif.context.note}}</span>  <a class="
 
 <profile-schedule:schedule-detail-notify-email:>
 
-<view name="email-editor" mode="interview">
-  <draft>{{#draft.data.details.email}}</draft>
-</view>
+<view name="email-editor" mode="interview" draft="{{#draft.data.details.email}}"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -5025,27 +4820,24 @@ Interview with {{#root._session.account.name}}
     <li class="scheduling-option">
       <div class="scheduling-option-title">Resume</div>
       <div>
-        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button">
+        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button" value="{{#slot.resume}}">
           <options>{{resumeOptions}}</options>
-          <value>{{#slot.resume}}</value>
         </view>
       </div>
     </li>{{/}}
     <li class="scheduling-option">
       <div class="scheduling-option-title">Feedback form</div>
       <div>
-        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button" prompt="Select form">
+        <view name="l-dropdown" class="tall-option caps-option" buttonClass="dark-button" value="{{#slot.cardTemplateId}}" prompt="Select form">
           <options>{{cardTemplates}}</options>
-          <value>{{#slot.cardTemplateId}}</value>
         </view>
       </div>
     </li>
     <li class="scheduling-option">
       <div class="scheduling-option-title">Remind</div>
       <div>
-        <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option">
+        <view name="l-dropdown" buttonClass="dark-button" class="tall-option caps-option" value="{{#slot.feedback}}">
           <options>{{feedbackOptions}}</options>
-          <value>{{#slot.feedback}}</value>
         </view>
       </div>
     </li>
@@ -5194,10 +4986,7 @@ class="dates">{{timeRange(#interview.date, #interview.duration, #interview.timez
   </div>
 </div>
 <view name="l-popup" class="darker" as="calendarPopup">
-  <view name="l-calendar" class="dark-calendar" on-select="calendarPopup.close()">
-    <value>{{draftSnooze.expiresAt}}</value>
-    <timezone>{{#root._session.timezoneName}}</timezone>
-  </view>
+  <view name="l-calendar" class="dark-calendar" value="{{draftSnooze.expiresAt}}" timezone="{{#root._session.timezoneName}}" on-select="calendarPopup.close()"></view>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -5228,10 +5017,7 @@ class="dates">{{timeRange(#interview.date, #interview.duration, #interview.timez
     <button class="submit {{if submitting}}disabled{{/}}" disabled="{{submitting}}" on-click="saveSnooze()">{{if submitting}}Saving...{{else}}Submit{{/}}</button>
   </div>
   <view name="l-popup" class="darker" as="calendarPopup">
-    <view name="l-calendar" class="dark-calendar" on-select="calendarPopup.close()">
-      <value>{{draftSnooze.expiresAt}}</value>
-      <timezone>{{#root._session.timezoneName}}</timezone>
-    </view>
+    <view name="l-calendar" class="dark-calendar" value="{{draftSnooze.expiresAt}}" timezone="{{#root._session.timezoneName}}" on-select="calendarPopup.close()"></view>
   </view>
 </div>
 
@@ -5298,22 +5084,10 @@ class="dates">{{timeRange(#interview.date, #interview.duration, #interview.timez
 <profile-stories:index:>
 
 <div class="profile-stories">{{each itemList as #item}}{{if #item.type === 'card'}}
-  <view name="l-card" on-submit="cardSubmit(#item.id)">
-    <card>{{#root.profile_cards[#item.id]}}</card>
-    <layout>{{#item.layout}}</layout>
-    <edit>{{cardsEdit[#item.id]}}</edit>
-  </view>{{else if #item.type === 'story'}}
-  <view name="profile-story">
-    <story>{{#root.profile_stories[#item.id]}}</story>
-  </view>{{else if #item.type === 'email'}}
-  <view name="email-thread">
-    <profile>{{profile}}</profile>
-    <thread>{{#root.email_threads[#item.id]}}</thread>
-    <emailsByThreadId>{{emailsByThreadId}}</emailsByThreadId>
-  </view>{{else if #item.type === 'interview-panel'}}
-  <view name="interview-panel">
-    <panel>{{interviewsByDate[#item.id]}}</panel>
-  </view>{{else}}{{JSON.stringify(#item)}}{{/}}{{else}}{{if #root.$render.params.historyPage === 'notes'}}
+  <view name="l-card" card="{{#root.profile_cards[#item.id]}}" layout="{{#item.layout}}" edit="{{cardsEdit[#item.id]}}" on-submit="cardSubmit(#item.id)"></view>{{else if #item.type === 'story'}}
+  <view name="profile-story" story="{{#root.profile_stories[#item.id]}}"></view>{{else if #item.type === 'email'}}
+  <view name="email-thread" profile="{{profile}}" thread="{{#root.email_threads[#item.id]}}" emailsByThreadId="{{emailsByThreadId}}"></view>{{else if #item.type === 'interview-panel'}}
+  <view name="interview-panel" panel="{{interviewsByDate[#item.id]}}"></view>{{else}}{{JSON.stringify(#item)}}{{/}}{{else}}{{if #root.$render.params.historyPage === 'notes'}}
   <view name="profile-stories:null-state-notes"></view>{{else if #root.$render.params.historyPage === 'emails'}}{{unless profile.emails}}
   <view name="profile-stories:null-state-emails-no-address"></view>{{else}}
   <view name="profile-stories:null-state-emails"></view>{{/}}{{else if #root.$render.params.historyPage === 'feedback'}}
@@ -6096,9 +5870,7 @@ L9.916,6.288c-0.003,0.002-4.875,4.874-4.875,4.874l1.484,1.483l4.873-4.872L11.484
 <div class="profile-story {{story.type}} profile-story-type-{{story.action}} {{if story.visibleTo}}secret{{/}}">
   <div class="story-header">
     <div class="story-actor">
-      <view name="l-identicon" class="large has-tip">
-        <user>{{#root.users_base[story.user.id]}}</user>
-      </view>
+      <view name="l-identicon" class="large has-tip" user="{{#root.users_base[story.user.id]}}"></view>
       <div class="actor-name">
         {{#root.users_base[story.user.id].name}}</div>
     </div>
@@ -6163,28 +5935,30 @@ L9.916,6.288c-0.003,0.002-4.875,4.874-4.875,4.874l1.484,1.483l4.873-4.872L11.484
   {{if referralCards}}
   <view name="profile-tags-sources:source-cards"></view>{{/}}
   <view name="profile-tags-sources:sources"></view>
-  <view name="l-popup" within="true" class="referral-delete-popup" content="<div class=" cards "><p class="larger white ">Also remove the referral form
-{{if data.referralCards.length > 1}}s{{/}}
-?</p>
-<div class="source-card-summaries ">{{each data.referralCards as #card}}<view name="l-card " layout="summary "><card>{{#card}}</card></view>{{/}}</div></div><div class="link-bar right "><a class="link dark " href="# " on-click="referralDeletePopup.close()
-  " on-click="$preventDefault($event) ">Cancel</a>
-<a class="link dark " href="# " on-click="dontDeleteReferralCards(data.source) " on-click="$preventDefault($event) ">Keep form
+  <view name="l-popup" within="true" class="referral-delete-popup" as="referralDeletePopup">
+    <div class="cards">
+      <p class="larger white">Also remove the referral form {{if data.referralCards.length > 1}}s{{/}} ?
+      </p>
+      <div class="source-card-summaries">{{each data.referralCards as #card}}
+        <view name="l-card" card="{{#card}}" layout="summary"></view>{{/}}</div>
+    </div>
+    <div class="link-bar right"><a class="link dark" href="#" on-click="referralDeletePopup.close()" on-click="$preventDefault($event)">Cancel</a>
+      <a class="link dark" href="#" on-click="dontDeleteReferralCards(data.source)" on-click="$preventDefault($event)">Keep form
 {{if data.referralCards.length > 1}}s{{/}}</a>
-<a class="dark-button " href="# " on-click="deleteReferralCards(data.source) " on-click="$preventDefault($event) ">Remove
-{{if data.referralCards.length > 1}} all{{/}}</a></div>" as="referralDeletePopup"></view>
+      <a class="dark-button" href="#" on-click="deleteReferralCards(data.source)" on-click="$preventDefault($event)">Remove
+{{if data.referralCards.length > 1}} all{{/}}</a>
+    </div>
+  </view>
 </div>
 
 <!------------------------------------------------------------------------------>
 
 <profile-tags-sources:tags:>
 
-<view name="l-multi-suggest" inherit="true" placeholder="Add tag" class="tags" label="{{if #item.class === 'referral'}}<a class=" link dark " title="See details " tabindex="-1 " href="# ">{{#item.text}}</a>{{else}}{{#item.text}}{{/}}" prepend="<span class="
-count ">{{#result.option.count}}</span>" as="tagsSuggest">
-  <options>{{#root.tags}}</options>
-  <ids>{{profile.tagIds}}</ids>
-  <hiddenIds>{{applicationTagIds}}</hiddenIds>
-  <filter>{{filter}}</filter>
-  <sort>{{sort}}</sort>
+<view name="l-multi-suggest" inherit="true" placeholder="Add tag" options="{{#root.tags}}" ids="{{profile.tagIds}}" hiddenIds="{{applicationTagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags" as="tagsSuggest">
+  <label>{{if #item.class === 'referral'}}<a class="link dark" title="See details" tabindex="-1" href="#">{{#item.text}}</a>{{else}}{{#item.text}}{{/}}</label>
+  <prepend><span class="count">{{#result.option.count}}</span>
+  </prepend>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -6193,21 +5967,18 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
 
 <div class="source-card-summaries">{{each referralCards as #card}}
   <a href="{{url('hire.profiles.feedback', #root.$render.params, #root.$render.query)}}">
-    <view name="l-card" layout="summary">
-      <card>{{#card}}</card>
-    </view>
+    <view name="l-card" card="{{#card}}" layout="summary"></view>
   </a>{{/}}</div>
 
 <!------------------------------------------------------------------------------>
 
 <profile-tags-sources:sources:>
 
-<view name="l-multi-suggest" inherit="true" placeholder="Add source" class="sources tags" label="{{if #item.referral}}<a class=" has-tip " title="See details " tabindex="-1 " href="{{url( 'hire.profiles.feedback', #root.$render.params, #root.$render.query)}} ">{{#item.text}}
-<view name="profile-tags-sources:icon-cards "></view></a>{{else}}{{#item.text}}{{/}}" prepend="<span class=" count ">{{#result.option.count}}</span>" as="sourcesSuggest">
-  <options>{{#root.sources}}</options>
-  <ids>{{profile.sourceIds}}</ids>
-  <filter>{{filter}}</filter>
-  <sort>{{sort}}</sort>
+<view name="l-multi-suggest" inherit="true" placeholder="Add source" options="{{#root.sources}}" ids="{{profile.sourceIds}}" filter="{{filter}}" sort="{{sort}}" class="sources tags" as="sourcesSuggest">
+  <label>{{if #item.referral}}<a class="has-tip" title="See details" tabindex="-1" href="{{url('hire.profiles.feedback', #root.$render.params, #root.$render.query)}}">{{#item.text}}
+<view name="profile-tags-sources:icon-cards"></view></a>{{else}}{{#item.text}}{{/}}</label>
+  <prepend><span class="count">{{#result.option.count}}</span>
+  </prepend>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -6222,9 +5993,7 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
       <td class="feedback-summary-stage-scores">{{each #group.scores as #score}}
         <div class="card-callout">{{with #score.field as #field}}
           <view name="l-card:fields:{{#field.type}}:callout"></view>{{/}}
-          <view name="l-identicon" class="has-tip">
-            <user>{{#root.users_base[#score.userId]}}</user>
-          </view>
+          <view name="l-identicon" user="{{#root.users_base[#score.userId]}}" class="has-tip"></view>
         </div>{{/}}</td>
     </tr>{{/}}</tbody>
 </table>{{/}}
@@ -6234,9 +6003,7 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
 <search-box:index:>
 
 <div class="header-search-container">
-  <view name="l-suggest" class="header-search tall-option" position="none" placeholder="Search candidates" noFocus="true" selectOnFocus="true" as="suggest" on-submit="submit()" on-select="select()">
-    <value>{{value}}</value>
-  </view>
+  <view name="l-suggest" class="header-search tall-option" position="none" placeholder="Search candidates" noFocus="true" selectOnFocus="true" value="{{value}}" as="suggest" on-submit="submit()" on-select="select()"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -6350,15 +6117,10 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
   <div class="select-date-conflict">{{if conflicts.text}}{{conflicts.text}} not in this timezone.{{if conflicts.timezone}}<a class="link dark" href="#" on-click="setTimezone()" on-click="$preventDefault($event)">Change to 
 {{displayTimezoneCompact(this)}}</a>{{else}} Change to{{each conflicts.timezones}}<a href="#" on-click="setTimezone()" on-click="$preventDefault($event)">{{displayTimezoneCompact(this)}}</a>{{/}}{{/}}{{/}}</div>
   <view name="l-popup" class="darker" as="calendarPopup">
-    <view name="l-calendar" class="dark-calendar" on-select="selectDate()">
-      <value>{{date}}</value>
-      <timezone>{{timezone}}</timezone>
-    </view>
+    <view name="l-calendar" class="dark-calendar" value="{{date}}" timezone="{{timezone}}" on-select="selectDate()"></view>
   </view>
   <view name="l-popup" class="darker" focus="input" as="timezonePopup">
-    <view name="l-picker" type="input" on-select="selectTimezone()">
-      <options>{{timezoneOptions}}</options>
-    </view>
+    <view name="l-picker" type="input" options="{{timezoneOptions}}" on-select="selectTimezone()"></view>
   </view>
 </div>
 
@@ -6394,17 +6156,15 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
 
 <div>
   <input class="classic-input" value="{{email}}" placeholder="Email address" />
-  <view name="l-dropdown" prompt="Choose role" class="role-dropdown tall-option caps-option" optionContent="{{#option.text}}<small><br/>
+  <view name="l-dropdown" value="{{accessRole}}" prompt="Choose role" class="role-dropdown tall-option caps-option" optionContent="{{#option.text}}<small><br/>
 {{#option.description}}</small>">
     <options>{{accessRoles}}</options>
-    <value>{{accessRole}}</value>
   </view>
   <div class="invite-limited-tags {{unless accessRole === 'limited'}}hidden{{/}}">
-    <view name="l-multi-suggest" placeholder="Add tags user can see" class="tags" label="{{#item.text}}" prepend="<span class=" count ">{{#result.option.count}}</span>" as="tagsSuggest">
-      <options>{{#root.tags}}</options>
-      <ids>{{tagIds}}</ids>
-      <filter>{{filter}}</filter>
-      <sort>{{sort}}</sort>
+    <view name="l-multi-suggest" placeholder="Add tags user can see" options="{{#root.tags}}" ids="{{tagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags" as="tagsSuggest">
+      <label>{{#item.text}}</label>
+      <prepend><span class="count">{{#result.option.count}}</span>
+      </prepend>
     </view>
   </div>
   {{if isFormValid}}
@@ -6464,10 +6224,9 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
 
 {{if editing[#invite.id]}}
 <td class="team-access-level">
-  <view name="l-dropdown" prompt="Choose role" class="role-dropdown tall-option caps-option" optionContent="{{#option.text}}<small><br/>
+  <view name="l-dropdown" value="{{working[#invite.id].accessRole}}" prompt="Choose role" class="role-dropdown tall-option caps-option" optionContent="{{#option.text}}<small><br/>
 {{#option.description}}</small>">
     <options>{{accessRoles}}</options>
-    <value>{{working[#invite.id].accessRole}}</value>
   </view>
 </td>{{else}}
 <td class="team-access-level"><span class="access-level">{{if #invite.userId}}{{getUserAccessRole(#root.users[#invite.userId].accessRoles)}}{{else}}{{getUserAccessRole(#invite.accessRoles)}}{{/}}</span>
@@ -6479,11 +6238,10 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
 
 {{if editing[#invite.id]}}
 <td class="team-access-tags {{if working[#invite.id].accessRole === 'limited'}}limited{{/}}">
-  <view name="l-multi-suggest" placeholder="Add tags" class="tags" label="{{#item.text}}" prepend="<span class=" count ">{{#result.option.count}}</span>" as="tagsSuggest">
-    <options>{{#root.tags}}</options>
-    <ids>{{working[#invite.id].tagIds}}</ids>
-    <filter>{{filter}}</filter>
-    <sort>{{sort}}</sort>
+  <view name="l-multi-suggest" placeholder="Add tags" options="{{#root.tags}}" ids="{{working[#invite.id].tagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags" as="tagsSuggest">
+    <label>{{#item.text}}</label>
+    <prepend><span class="count">{{#result.option.count}}</span>
+    </prepend>
   </view>
 </td>{{else}}
 <td class="team-access-tags {{if contains(#root.users[#invite.userId].accessRoles, 'limited')}}limited{{/}}">
@@ -6525,9 +6283,7 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
   <tbody>{{each members as #user}}
     <tr class="{{{{if editing[#user.id]}}editing{{/}}}}">
       <td class="team-access-identicon">
-        <view name="l-identicon" class="has-tip">
-          <user>{{#user}}</user>
-        </view>
+        <view name="l-identicon" user="{{#user}}" class="has-tip"></view>
       </td>
       <view name="team-list:team-list-user"></view>
       <view name="team-list:team-list-access-level"></view>
@@ -6540,9 +6296,7 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
   <tbody>{{each interviewers as #user}}
     <tr>
       <td class="team-access-identicon">
-        <view name="l-identicon" class="has-tip">
-          <user>{{#user}}</user>
-        </view>
+        <view name="l-identicon" user="{{#user}}" class="has-tip"></view>
       </td>
       <view name="team-list:team-list-user"></view>
       <view name="team-list:team-list-access-level"></view>
@@ -6565,10 +6319,9 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
 <team-list:team-list-access-level:>
 
 <td class="team-access-level {{unless editing[#user.id]}}hidden{{/}}">
-  <view name="l-dropdown" prompt="Choose role" buttonClass="role-dropdown" class="tall-option caps-option" optionContent="{{#option.text}}<small><br/>
+  <view name="l-dropdown" value="{{working[#user.id].accessRole}}" prompt="Choose role" buttonClass="role-dropdown" class="tall-option caps-option" optionContent="{{#option.text}}<small><br/>
 {{#option.description}}</small>">
     <options>{{accessRoles}}</options>
-    <value>{{working[#user.id].accessRole}}</value>
   </view>
 </td>
 <td class="team-access-level {{if editing[#user.id]}}hidden{{/}}"><span class="access-level">{{userAccessRole(#user.accessRoles)}}</span>
@@ -6582,11 +6335,10 @@ Edit</span>
 
 {{if editing[#user.id]}}
 <td class="team-access-tags {{if working[#user.id].accessRole === 'limited'}}limited{{/}}">
-  <view name="l-multi-suggest" placeholder="Add tags user should see" class="tags" label="{{#item.text}}" prepend="<span class=" count ">{{#result.option.count}}</span>">
-    <options>{{#root.tags}}</options>
-    <ids>{{working[#user.id].tagIds}}</ids>
-    <filter>{{filter}}</filter>
-    <sort>{{sort}}</sort>
+  <view name="l-multi-suggest" placeholder="Add tags user should see" options="{{#root.tags}}" ids="{{working[#user.id].tagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags">
+    <label>{{#item.text}}</label>
+    <prepend><span class="count">{{#result.option.count}}</span>
+    </prepend>
   </view>
 </td>{{/}}
 <td class="team-access-tags {{if contains(#user.accessRoles, 'limited')}}limited{{else}}hide-tags{{/}} {{if editing[#user.id]}}hidden{{/}}">
@@ -7209,9 +6961,7 @@ M4,12v1h8v-1H4L4,12z"></path>
     {{@pageNav}}
     <div class="header-nav-right">{{if _session.hasAccess.limited}}
       <view name="search-box"></view>{{/}}
-      <view name="l-identicon" class="user-icon">
-        <user>{{_session.user}}</user>
-      </view>
+      <view name="l-identicon" class="user-icon" user="{{_session.user}}"></view>
       <view name="l-popup" hoverTarget=".header-nav-right .identicon" class="user-settings-menu has-menu tall-option caps-option" position="bottom-right" margin="26">
         <ul>
           <li class="header-nav-name">{{_session.user.email}}</li>
@@ -7332,15 +7082,9 @@ M4,12v1h8v-1H4L4,12z"></path>
       </div>
     </div>
   </div>{{else}}
-  <view name="infinite-scroll" as="infiniteScroll" on-scroll="listHeader.scroll()" on-more="more()">
-    <stop>{{stop}}</stop>
-    <view name="{{#root.$render.query.onlySnoozed ? 'profile-list-snoozed' : 'profile-list-by-stage'}}" as="profileList" on-create="listNav.initList()">
-      <stop>{{stop}}</stop>
-      <profilesFilter>{{profilesFilter}}</profilesFilter>
-      <profilesFields>{{profilesFields}}</profilesFields>
-      <diffList>{{diffList}}</diffList>
-      <selectMode>{{listSelectMode}}</selectMode>
-    </view>{{if loadingMore}}
+  <view name="infinite-scroll" stop="{{stop}}" as="infiniteScroll" on-scroll="listHeader.scroll()" on-more="more()">
+    <view name="{{#root.$render.query.onlySnoozed ? 'profile-list-snoozed' : 'profile-list-by-stage'}}" stop="{{stop}}" profilesFilter="{{profilesFilter}}" profilesFields="{{profilesFields}}" diffList="{{diffList}}" selectMode="{{listSelectMode}}" as="profileList"
+    on-create="listNav.initList()"></view>{{if loadingMore}}
     <div class="loading-more">
       <div class="loading-indicator"></div>
     </div>{{/}}</view>{{/}}
@@ -7351,26 +7095,13 @@ M4,12v1h8v-1H4L4,12z"></path>
       <view name="view-toggle"></view>
     </view>
     <view name="pipeline"></view>
-    <view name="list-controls" as="listControls">
-      <diffList>{{diffList}}</diffList>
-      <selectMode>{{listSelectMode}}</selectMode>
-      <activeActions>
-        <view name="lists:bulk-actions"></view>
-      </activeActions>
-      <defaultActions>
-        <view name="lists:list-actions"></view>
-      </defaultActions>
-    </view>
+    <view name="list-controls" diffList="{{diffList}}" selectMode="{{listSelectMode}}" activeActions="<view name=" lists:bulk-actions "></view>" defaultActions="<view name=" lists:list-actions "></view>" as="listControls"></view>
   </view>
   <div class="sidebar">
     <view name="filtervis"></view>
   </div>
-  <view name="profile-flyover" as="page,profileFlyover">
-    <nav>{{nav}}</nav>
-  </view>
-  <view name="list-nav" as="listNav">
-    <nav>{{nav}}</nav>
-  </view>
+  <view name="profile-flyover" nav="{{nav}}" as="page,profileFlyover"></view>
+  <view name="list-nav" nav="{{nav}}" as="listNav"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -7391,13 +7122,8 @@ M4,12v1h8v-1H4L4,12z"></path>
       </div>
     </div>
   </div>{{else}}
-  <view name="infinite-scroll" as="infiniteScroll" on-more="more()">
-    <stop>{{stop}}</stop>
-    <view name="profile-list-search" as="profileList" on-create="listNav.initList()">
-      <query>{{query}}</query>
-      <diffList>{{diffList}}</diffList>
-      <selectMode>{{listSelectMode}}</selectMode>
-    </view>{{if loadingMore}}
+  <view name="infinite-scroll" stop="{{stop}}" as="infiniteScroll" on-more="more()">
+    <view name="profile-list-search" query="{{query}}" diffList="{{diffList}}" selectMode="{{listSelectMode}}" as="profileList" on-create="listNav.initList()"></view>{{if loadingMore}}
     <div class="loading-more">
       <div class="loading-indicator"></div>
     </div>{{/}}</view>{{/}}
@@ -7409,23 +7135,13 @@ M4,12v1h8v-1H4L4,12z"></path>
       <h4 class="results-count"><span class="numbers">{{#root._page.facets.profiles.total}}</span>
  results</h4>
     </view>
-    <view name="list-controls" as="listControls">
-      <diffList>{{diffList}}</diffList>
-      <selectMode>{{listSelectMode}}</selectMode>
-      <activeActions>
-        <view name="lists:bulk-actions"></view>
-      </activeActions>
-    </view>
+    <view name="list-controls" diffList="{{diffList}}" selectMode="{{listSelectMode}}" activeActions="<view name=" lists:bulk-actions "></view>" as="listControls"></view>
   </div>
   <div class="sidebar">
     <view name="filtervis"></view>
   </div>
-  <view name="profile-flyover" as="page,profileFlyover">
-    <nav>{{nav}}</nav>
-  </view>
-  <view name="list-nav" as="listNav">
-    <nav>{{nav}}</nav>
-  </view>
+  <view name="profile-flyover" nav="{{nav}}" as="page,profileFlyover"></view>
+  <view name="list-nav" nav="{{nav}}" as="listNav"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -7434,9 +7150,7 @@ M4,12v1h8v-1H4L4,12z"></path>
 
 <div class="list-title {{if breadcrumbs}}breadcrumbs{{/}}">
   <div class="list-title-wrapper">{{@content}}</div>
-  <view name="breadcrumbs">
-    <breadcrumbs>{{breadcrumbs}}</breadcrumbs>
-  </view>
+  <view name="breadcrumbs" breadcrumbs="{{breadcrumbs}}"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -7523,9 +7237,7 @@ Postings – Lever Hire
               <view name="icon-closed"></view>
             </a>{{else}}
             <a href="{{url('hire.postings.edit', {postingId: #item.id})}}">
-              <view name="icon-indicator-dot">
-                <class>{{if #item.active}}on{{/}}</class>
-              </view>
+              <view name="icon-indicator-dot" class="{{if #item.active}}on{{/}}"></view>
             </a>{{/}}</td>
           <td class="postings-list-link">{{if #item.state === 'active' && #item.active}}
             <a class="has-tip" title="Link to job posting" target="_blank" href="{{url('postings.postings.show', {shortUrl: siteUrl, posting: #item.id})}}">
@@ -7546,9 +7258,7 @@ Postings – Lever Hire
           </td>
           <td class="postings-list-owner">
             <a href="{{url('hire.postings.edit', {postingId: #item.id})}}">
-              <view name="l-identicon">
-                <user>{{#root.users_base[#item.ownerId]}}</user>
-              </view>
+              <view name="l-identicon" user="{{#root.users_base[#item.ownerId]}}"></view>
             </a>
           </td>
         </tr>{{/}}</tbody>{{/}}</table>
@@ -7612,18 +7322,9 @@ Postings – Lever Hire
 <postings:edit:categories:>
 
 <div class="postings-details section">
-  <view name="l-suggest" placeholder="Add location" as="categorySuggest,location">
-    <options>{{categorySuggestions.location}}</options>
-    <value>{{categoriesByName.location}}</value>
-  </view>
-  <view name="l-suggest" placeholder="Full-time/part-time?" as="categorySuggest,commitment">
-    <options>{{categorySuggestions.commitment}}</options>
-    <value>{{categoriesByName.commitment}}</value>
-  </view>
-  <view name="l-suggest" placeholder="Add team / department" as="categorySuggest,team">
-    <options>{{categorySuggestions.team}}</options>
-    <value>{{categoriesByName.team}}</value>
-  </view>
+  <view name="l-suggest" placeholder="Add location" options="{{categorySuggestions.location}}" value="{{categoriesByName.location}}" as="categorySuggest,location"></view>
+  <view name="l-suggest" placeholder="Full-time/part-time?" options="{{categorySuggestions.commitment}}" value="{{categoriesByName.commitment}}" as="categorySuggest,commitment"></view>
+  <view name="l-suggest" placeholder="Add team / department" options="{{categorySuggestions.team}}" value="{{categoriesByName.team}}" as="categorySuggest,team"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -7670,11 +7371,10 @@ Postings – Lever Hire
  For importing into Lever</h4>
   <p class="postings-microcopy">These tags will be applied to each applicant.</p>
   <div>
-    <view name="l-multi-suggest" inherit="true" placeholder="Add tag" class="tags" label="{{#item.text}}" prepend="<span class=" count ">{{#result.option.count}}</span>" as="tagsSuggest">
-      <options>{{#root.tags}}</options>
-      <ids>{{pending.tagIds}}</ids>
-      <filter>{{filter}}</filter>
-      <sort>{{sort}}</sort>
+    <view name="l-multi-suggest" inherit="true" placeholder="Add tag" options="{{#root.tags}}" ids="{{pending.tagIds}}" filter="{{filter}}" sort="{{sort}}" class="tags" as="tagsSuggest">
+      <label>{{#item.text}}</label>
+      <prepend><span class="count">{{#result.option.count}}</span>
+      </prepend>
     </view>
   </div>
 </div>
@@ -7686,10 +7386,7 @@ Postings – Lever Hire
 <div class="postings-owner section">
   <h4>Posting owner</h4>
   <p class="postings-microcopy">Who will own the candidates that apply to this job?</p>
-  <view name="l-user-picker" clearable="true">
-    <value>{{pending.ownerId}}</value>
-    <options>{{#root.users_base}}</options>
-  </view>
+  <view name="l-user-picker" value="{{pending.ownerId}}" options="{{#root.users_base}}" clearable="true"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -7708,9 +7405,7 @@ Postings – Lever Hire
   <button class="btn has-icon postings-card-add" on-click="cardEditor.newCard()">
     <view name="icon-plus"></view>
     Create new questions</button>{{/}}
-  <view name="card-editor" mode="user" as="cardEditor" on-submit="submitCard()">
-    <pending>{{pendingTemplate}}</pending>
-  </view>
+  <view name="card-editor" pending="{{pendingTemplate}}" mode="user" as="cardEditor" on-submit="submitCard()"></view>
   <div class="postings-custom-form-unit-wrapper">{{each additionalCards as #template}}
     <div class="postings-custom-form-unit link-bar">
       <h3>{{#template.text}}</h3>
@@ -7986,9 +7681,7 @@ My Account – Lever Settings
             .
             <span class="what-is-this has-tip" title="Gravatar is a service for hosting your avatar. Make sure you set up Gravatar with the same email as the one you use in Lever. May take up to 24 hours to update."> [?]</span>
           </p>
-          <view name="l-identicon" class="x-large avatar">
-            <user>{{#root._session.user}}</user>
-          </view>
+          <view name="l-identicon" user="{{#root._session.user}}" class="x-large avatar"></view>
         </label>
       </li>
     </ul>
@@ -8011,23 +7704,15 @@ Team – Lever Settings
   <div class="nav-content">
     <h3>Invite team members </h3>
     <div class="invite-user">
-      <view name="invite-user">
-        <inviter>{{#root._session.user}}</inviter>
-        <account>{{#root._session.account}}</account>
-      </view>
+      <view name="invite-user" inviter="{{#root._session.user}}" account="{{#root._session.account}}"></view>
     </div>
     <div class="settings-section {{if !invites}}hidden{{/}}">
       <h4>Pending Invitations</h4>
-      <view name="pending-invites">
-        <invites>{{invites}}</invites>
-        <account>{{#root._session.account}}</account>
-      </view>
+      <view name="pending-invites" invites="{{invites}}" account="{{#root._session.account}}"></view>
     </div>
     <div class="settings-section">
       <h4>Team</h4>
-      <view name="team-list">
-        <suggestedTags>{{#root._page.allSuggestedTags}}</suggestedTags>
-      </view>
+      <view name="team-list" suggestedTags="{{#root._page.allSuggestedTags}}"></view>
     </div>
   </div>
 </div>
@@ -8123,21 +7808,17 @@ Email Templates – Lever Settings
           <div class="email-sending-settings">
             <div class="label">From</div>
             {{on pendingTemplate.fromType as #fromType}}
-            <view name="l-dropdown" buttonClass="btn-no-style">
-              <value>{{#fromType}}</value>
+            <view name="l-dropdown" buttonClass="btn-no-style" value="{{#fromType}}">
               <option value="user email">Sender's email</option>
               <option value="no-reply">From no-reply</option>
             </view>{{/}}
             <div class="email-additional-settings">
               <div class="email-cc-bcc">{{if !showCC}}<a href="#" class="has-tip cc-bcc" title="Add default CC and BCC" on-click="addCC()">cc/bcc</a>{{/}}</div>
               <div class="email-upload has-tip" title="Add attachment">
-                <view name="file-attachment" directory="uploads">
-                  <fileIds>{{pendingTemplate.fileIds}}</fileIds>
-                </view>
+                <view name="file-attachment" fileIds="{{pendingTemplate.fileIds}}" directory="uploads"></view>
               </div>
               <div class="email-delay-settings has-tip delay-sending" title="Delay sending">
-                <view name="l-dropdown" buttonClass="btn-no-style">
-                  <value>{{pendingTemplate.delay}}</value>
+                <view name="l-dropdown" buttonClass="btn-no-style" value="{{pendingTemplate.delay}}">
                   <label>
                     <view name="icon-clock"></view>{{pendingTemplate.delay}}</label>
                   <option value="null">Send now</option>
@@ -8256,9 +7937,7 @@ Forms – Lever Settings
           <view name="settings:forms:icon-undeleteable"></view>
         </a>{{/}}{{/}}</div>
       <div class="card-template-compose">
-        <view name="card-editor" mode="settings" as="cardEditor">
-          <pending>{{pendingTemplate}}</pending>
-        </view>
+        <view name="card-editor" pending="{{pendingTemplate}}" mode="settings" as="cardEditor"></view>
       </div>
       <div class="card-template-buttons">{{if pendingTemplate.type !== 'interview' && templateStages[pendingTemplate.id]}}
         <button class="submit-large" on-click="saveConfirm.toggle($element)">Save changes</button>{{else}}
@@ -8299,9 +7978,7 @@ Forms – Lever Settings
           <h4>Stage</h4>
         </td>
         <td class="value">
-          <view name="l-picker" prompt="Select one" on-select="selectStageDefault()">
-            <options>{{stageOptions}}</options>
-          </view>
+          <view name="l-picker" options="{{stageOptions}}" prompt="Select one" on-select="selectStageDefault()"></view>
         </td>
       </tr>
     </tbody>
@@ -8834,9 +8511,8 @@ Lever reports - Summary
 <div class="report-toolbar">
   <h1 class="report-title">{{@title}}</h1>
   <div class="report-actions">
-    <view name="l-dropdown" class="reporting-period-dropdown caps-option tall-option">
+    <view name="l-dropdown" class="reporting-period-dropdown caps-option tall-option" value="{{timePeriod}}">
       <options>{{reportingPeriods}}</options>
-      <value>{{timePeriod}}</value>
     </view>
     <a class="btn has-icon" target="_blank" href="{{url('hire.files.download', {'accountId': #root._session.accountId, 'userId': #root._session.userId, 'fileId':'reports', 'fileName': name+'.'+ timePeriod +'.csv'})}}">
       <view name="icon-download"></view>
@@ -8876,22 +8552,20 @@ Lever reports - Summary
 <reports:pipeline:pipeline-conversion-posting:>
 
 {{if #root.$render.params.query.section === "activity"}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by posting" rows="{{postings}}">
   <description>
     <p class="description">This report shows the number of candidates who entered a stage during the specified time period.</p>
   </description>
 </view>{{else}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by posting" rows="{{postings}}">
   <description>
     <p class="description">Percent conversion is calculated by dividing the number of candidates who exited a stage (advanced to the next stage or hired) by the number of candidates in it.</p>
   </description>
 </view>{{/}}
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-conversion-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postings}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postings}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-conversion-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -8899,22 +8573,20 @@ Lever reports - Summary
 <reports:pipeline:pipeline-conversion-owner:>
 
 {{if #root.$render.params.query.section === "activity"}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by owner">
-  <rows>{{postingOwners}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by owner" rows="{{postingOwners}}">
   <description>
     <p class="description">This report shows the number of candidates who entered a stage during the specified time period by posting owner.</p>
   </description>
 </view>{{else}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by owner">
-  <rows>{{postingOwners}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by owner" rows="{{postingOwners}}">
   <description>
     <p class="description">Percent conversion is calculated by dividing the number of candidates who exited a stage (advanced to the next stage or hired) by the number of candidates in it.</p>
   </description>
 </view>{{/}}
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-conversion-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postingOwners}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postingOwners}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-conversion-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -8922,22 +8594,20 @@ Lever reports - Summary
 <reports:pipeline:pipeline-conversion-source:>
 
 {{if #root.$render.params.query.section === "activity"}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by source">
-  <rows>{{sortedSources}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by source" rows="{{sortedSources}}">
   <description>
     <p class="description">This report shows the number of candidates who entered a stage during the specified time period.</p>
   </description>
 </view>{{else}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by source">
-  <rows>{{sortedSources}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by source" rows="{{sortedSources}}">
   <description>
     <p class="description">Percent conversion is calculated by dividing the number of candidates who exited a stage (advanced to the next stage or hired) by the number of candidates in it.</p>
   </description>
 </view>{{/}}
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-conversion-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{sortedSources}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{sortedSources}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-conversion-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -8945,22 +8615,20 @@ Lever reports - Summary
 <reports:pipeline:pipeline-conversion-sourcer:>
 
 {{if #root.$render.params.query.section === "activity"}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by sourcer">
-  <rows>{{sourcers}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by sourcer" rows="{{sourcers}}">
   <description>
     <p class="description">This report shows the number of candidates who entered a stage during the specified time period.</p>
   </description>
 </view>{{else}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by sourcer">
-  <rows>{{sourcers}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by sourcer" rows="{{sourcers}}">
   <description>
     <p class="description">Percent conversion is calculated by dividing the number of candidates who exited a stage (advanced to the next stage or hired) by the number of candidates in it.</p>
   </description>
 </view>{{/}}
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-conversion-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{sourcers}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{sourcers}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-conversion-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -8968,134 +8636,125 @@ Lever reports - Summary
 <reports:pipeline:pipeline-conversion-team:>
 
 {{if #root.$render.params.query.section === "activity"}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline candidates by team" rows="{{teams}}">
   <description>
     <p class="description">This report shows the number of candidates who entered a stage during the specified time period.</p>
   </description>
 </view>{{else}}
-<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline conversion by team" rows="{{teams}}">
   <description>
     <p class="description">Percent conversion is calculated by dividing the number of candidates who exited a stage (advanced to the next stage or hired) by the number of candidates in it.</p>
   </description>
 </view>{{/}}
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-conversion-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{teams}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{teams}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-conversion-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-speed-posting:>
 
-<view name="reports:pipeline:reportToolbar" title="Pipeline speed by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline speed by posting" rows="{{postings}}">
   <description>
     <p class="description">Average days spent in each stage across all candidates who have had stage changes or been archived in the selected time period.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-speed-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postings}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postings}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-speed-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-speed-owner:>
 
-<view name="reports:pipeline:reportToolbar" title="Pipeline speed by posting owner">
-  <rows>{{postingOwners}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline speed by posting owner" rows="{{postingOwners}}">
   <description>
     <p class="description">Average days spent in each stage across all candidates who have had stage changes or been archived in the selected time period.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-speed-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postingOwners}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postingOwners}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-speed-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-speed-source:>
 
-<view name="reports:pipeline:reportToolbar" title="Pipeline speed by source">
-  <rows>{{sortedSources}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline speed by source" rows="{{sortedSources}}">
   <description>
     <p class="description">Average days spent in each stage across all candidates who have had stage changes or been archived in the selected time period.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-speed-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{sortedSources}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{sortedSources}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-speed-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-speed-team:>
 
-<view name="reports:pipeline:reportToolbar" title="Pipeline speed by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Pipeline speed by team" rows="{{teams}}">
   <description>
     <p class="description">Average days spent in each stage across all candidates who have had stage changes or been archived in the selected time period.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-speed-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{teams}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{teams}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-speed-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-toplevel-posting:>
 
-<view name="reports:pipeline:reportToolbar" title="Candidate stats by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Candidate stats by posting" rows="{{postings}}">
   <description>
     <p class="description">This report shows by posting how many candidates entered the pipeline through available channels and how they exited the pipeline.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-toplevel-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{statColumns}}</columns>
-  <rows>{{postings}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{statColumns}}" rows="{{postings}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-toplevel-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-toplevel-source:>
 
-<view name="reports:pipeline:reportToolbar" title="Candidate stats by source">
-  <rows>{{sortedSources}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Candidate stats by source" rows="{{sortedSources}}">
   <description>
     <p class="description">This report shows by source how many candidates total were added to the pipeline and how they exited the pipeline.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-toplevel-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{sourceStatColumns}}</columns>
-  <rows>{{sortedSources}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{sourceStatColumns}}" rows="{{sortedSources}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-toplevel-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:pipeline:pipeline-toplevel-team:>
 
-<view name="reports:pipeline:reportToolbar" title="Candidate stats by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Candidate stats by team" rows="{{teams}}">
   <description>
     <p class="description">This report shows by team how many candidates entered the pipeline through available channels and how they exited the pipeline.</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:pipeline:pipeline-toplevel-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{statColumns}}</columns>
-  <rows>{{teams}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{statColumns}}" rows="{{teams}}">
+  <cellcontent>
+    <view name="reports:pipeline:pipeline-toplevel-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -9125,112 +8784,105 @@ Lever reports - Summary
 
 <reports:interviews:interviews-toplevel-posting:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview types by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview types by posting" rows="{{postings}}">
   <description>
     <p class="description">Key metrics to know many of each type of interview occurred during the specified time period</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-toplevel-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{interviewColumns}}</columns>
-  <rows>{{postings}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{interviewColumns}}" rows="{{postings}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-toplevel-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-toplevel-team:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview types by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview types by team" rows="{{teams}}">
   <description>
     <p class="description">Key metrics to know many of each type of interview occurred during the specified time period</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-toplevel-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{interviewColumns}}</columns>
-  <rows>{{teams}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{interviewColumns}}" rows="{{teams}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-toplevel-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-counts-posting:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview counts by posting">
-  <rows>{{postings}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview counts by posting" rows="{{postings}}">
   <description>
     <p class="description">Count of how many interviews took place across the stages in your pipeline</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-counts-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postings}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postings}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-counts-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-counts-owner:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview counts by posting">
-  <rows>{{postingOwners}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview counts by posting" rows="{{postingOwners}}">
   <description>
     <p class="description">Count of how many interviews took place across the stages in your pipeline</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-counts-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{postingOwners}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{postingOwners}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-counts-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-counts-scheduler:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview counts by scheduler">
-  <rows>{{schedulers}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview counts by scheduler" rows="{{schedulers}}">
   <description>
     <p class="description">Count of how many interviews took place across the stages in your pipeline</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-counts-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{schedulers}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{schedulers}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-counts-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-counts-interviewer:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview counts by interviewer">
-  <rows>{{sourcers}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview counts by interviewer" rows="{{sourcers}}">
   <description>
     <p class="description">Count of how many interviews took place across the stages in your pipeline</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-counts-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{sourcers}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{sourcers}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-counts-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
 
 <reports:interviews:interviews-counts-team:>
 
-<view name="reports:pipeline:reportToolbar" title="Interview counts by team">
-  <rows>{{teams}}</rows>
+<view name="reports:pipeline:reportToolbar" title="Interview counts by team" rows="{{teams}}">
   <description>
     <p class="description">Count of how many interviews took place across the stages in your pipeline</p>
   </description>
 </view>
-<view name="report-table" cellcontent="<view name=" reports:interviews:interviews-counts-cellcontent "></view>">
-  <summary>{{report}}</summary>
-  <columns>{{stages}}</columns>
-  <rows>{{teams}}</rows>
+<view name="report-table" summary="{{report}}" columns="{{stages}}" rows="{{teams}}">
+  <cellcontent>
+    <view name="reports:interviews:interviews-counts-cellcontent"></view>
+  </cellcontent>
 </view>
 
 <!------------------------------------------------------------------------------>
@@ -9362,7 +9014,7 @@ Lever Reports
 
 <!------------------------------------------------------------------------------>
 
-  [32m  ✓[0m[90m input [0m[31m(1424ms)[0m
+  [32m  ✓[0m[90m input [0m[31m(1384ms)[0m
 
 
 [92m [0m[32m 1 passing[0m[90m (1s)[0m
