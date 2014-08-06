@@ -1,7 +1,7 @@
 <TitleElement:>
 
 <title>
-  <view name="{{{{$render.prefix}}Title}}"></view>
+  <view name="{{$render.prefix}}Title"></view>
 </title>
 
 <!------------------------------------------------------------------------------>
@@ -9,7 +9,7 @@
 <BodyElement:>
 
 <body class="{{$bodyClass($render.ns)}}">
-  <view name="{{{{$render.prefix}}Body}}"></view>
+  <view name="{{$render.prefix}}Body"></view>
 </body>
 
 <!------------------------------------------------------------------------------>
@@ -496,7 +496,7 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
 <l-card:fields:note:callout:>
 
 <div class="card-score-value">
-  <view name="{{icon-{{scoreToThumbIcon(#field.score, #field.scoreSystemId)}}}}" optional="true"></view>
+  <view name="icon-{{scoreToThumbIcon(#field.score, #field.scoreSystemId)}}" optional="true"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -672,14 +672,14 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
 <l-card:fields:score-system:show:>
 
 {{if #field.value && #field.scoreSystemId}}{{if #field.overall}}
-<view name="{{l-card:fields:{{scoreSystemName(#field)}}:callout}}" optional="true"></view>{{else}}
-<view name="{{l-card:fields:{{scoreSystemName(#field)}}:show}}" optional="true"></view>{{/}}{{/}}
+<view name="l-card:fields:{{scoreSystemName(#field)}}:callout" optional="true"></view>{{else}}
+<view name="l-card:fields:{{scoreSystemName(#field)}}:show" optional="true"></view>{{/}}{{/}}
 
 <!------------------------------------------------------------------------------>
 
 <l-card:fields:score-system:edit:>
 
-<view name="{{l-card:fields:{{scoreSystemName(#field)}}:edit}}" optional="true"></view>
+<view name="l-card:fields:{{scoreSystemName(#field)}}:edit" optional="true"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -699,7 +699,7 @@ C1.206,8.348,0.894,7.765,1.033,7.167C1.172,6.567,1.71,6.18,2.234,6.302z"></path>
 <l-card:fields:score-system:callout:>
 
 <div class="card-score-value">
-  <view name="{{icon-{{scoreToThumbIcon(#field.value, #field.scoreSystemId)}}}}" optional="true"></view>
+  <view name="icon-{{scoreToThumbIcon(#field.value, #field.scoreSystemId)}}" optional="true"></view>
 </div>
 
 <!------------------------------------------------------------------------------>
@@ -871,7 +871,7 @@ Delete</a>
 {{if edit}}
 <ul class="history-card-fields edit">{{each card.fields as #field}}
   <li class="profile-card-form-field field-type-{{#field.type}}">
-    <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
   </li>{{/}}
   <div class="link-bar right">{{if card.type === 'interview'}}
     <button class="submit profile-card-form-submit" on-click="submit()">Submit</button>{{else}}
@@ -903,7 +903,7 @@ Delete</a>
           <user>{{#root.users_base[#interviewer.id]}}</user>
         </view>{{/}}{{/}}</li>{{/}}</ul>{{/}}</li>{{/}} {{each card.fields as #field}}
   <li class="card-field {{#field.type}}-field {{if #field.overall}}overall{{/}}">
-    <view name="{{l-card:fields:{{#field.type}}:show}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:show" optional="true"></view>
   </li>{{/}}</ul>{{/}}
 <div class="card-footer"><span><a href="#" on-click="expand()" on-click="$preventDefault($event)">Expand</a></span>
 </div>
@@ -977,17 +977,17 @@ Delete</a>
 {{if edit}}
 <ul class="history-card-fields edit">{{each card.fields as #field}}{{if #field.userId === #root._session.userId}}
   <li class="profile-card-form-field field-type-{{#field.type}}">
-    <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
   </li>{{else}}
   <li class="card-field {{#field.type}}-field {{if #field.overall}}overall{{/}}">
-    <view name="{{l-card:fields:{{#field.type}}:show}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:show" optional="true"></view>
   </li>{{/}}{{/}}</ul>
 <div class="link-bar right">
   <button class="submit profile-card-form-submit" on-click="edit()">Done</button>
 </div>{{else}}
 <ul class="history-card-fields {{card.type}}-card-fields">{{each card.fields as #field}}
   <li class="card-field {{#field.type}}-field {{if #field.overall}}overall{{/}}">
-    <view name="{{l-card:fields:{{#field.type}}:show}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:show" optional="true"></view>
   </li>{{/}}</ul>{{/}}
 <div class="card-footer"><span><a href="#" on-click="expand()" on-click="$preventDefault($event)">Expand</a></span>
 </div>
@@ -1066,7 +1066,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <l-card:layouts:callout:index:>
 
 <div class="card-callout">{{if cardScoreField(card)}}{{with this as #field}}
-  <view name="{{l-card:fields:{{#field.type}}:callout}}" optional="true"></view>
+  <view name="l-card:fields:{{#field.type}}:callout" optional="true"></view>
   <view name="l-identicon">
     <user>{{#root.users_base[card.userId]}}</user>
   </view>{{/}}{{/}}</div>
@@ -1078,7 +1078,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <form on-submit="parent.close()" on-submit="$preventDefault($event)">
   <ul class="history-card-fields edit">{{each card.fields as #field}}
     <li class="profile-card-form-field field-type-{{#field.type}}">
-      <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+      <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
     </li>{{/}}</ul>
   <div class="link-bar right">{{if card.type == "interview"}}
     <button class="submit" type="submit" on-click="submit()">Submit</button>{{else}}
@@ -1093,7 +1093,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
   <form on-submit="submit()" on-submit="$preventDefault($event)">
     <ul class="history-card-fields">{{each card.fields as #field}}
       <li class="profile-card-form-field field-type-{{#field.type}}">
-        <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+        <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
       </li>{{/}}</ul>
     <button class="{{disabled}} submit-large" type="submit" disabled="{{disabled}}">Submit feedback</button>
   </form>
@@ -1106,7 +1106,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <div class="card-form">
   <ul class="history-card-fields edit">{{each card.fields as #field}}
     <li class="profile-card-form-field field-type-{{#field.type}}">
-      <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+      <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
     </li>{{/}}</ul>
 </div>
 
@@ -1115,14 +1115,14 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <l-card:layouts:summary:index:>
 
 <div class="card-summary">{{each card.fields as #field}}{{if #field.isSummary}}
-  <view name="{{l-card:fields:{{#field.type}}:summary}}" optional="true"></view>{{/}}{{/}}</div>
+  <view name="l-card:fields:{{#field.type}}:summary" optional="true"></view>{{/}}{{/}}</div>
 
 <!------------------------------------------------------------------------------>
 
 <l-card:layouts:score-summary:index:>
 
 {{if cardScoreField(card)}}{{if this.value}}{{with this as #field}}
-<view name="{{l-card:fields:{{#field.type}}:summary}}" optional="true"></view>{{/}}{{else}}—{{/}}{{else}}—{{/}}
+<view name="l-card:fields:{{#field.type}}:summary" optional="true"></view>{{/}}{{else}}—{{/}}{{else}}—{{/}}
 
 <!------------------------------------------------------------------------------>
 
@@ -1130,7 +1130,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 
 <ul class="history-card-fields edit">{{each card.fields as #field}}
   <li class="profile-card-form-field field-type-{{#field.type}}">
-    <view name="{{l-card:fields:{{#field.type}}:edit}}" optional="true"></view>
+    <view name="l-card:fields:{{#field.type}}:edit" optional="true"></view>
   </li>{{/}}</ul>
 
 <!------------------------------------------------------------------------------>
@@ -1138,7 +1138,7 @@ c1.479,0,2.728,1.265,2.728,2.762V6.612L10.728,6.612z"></path>
 <l-card:index: element="l-card">
 
 <div as="cardContainer">{{if layout}}
-  <view name="{{l-card:layouts:{{layout}}}}" optional="true"></view>{{else}}
+  <view name="l-card:layouts:{{layout}}" optional="true"></view>{{else}}
   <view name="l-card:layouts:profile"></view>{{/}}</div>
 
 <!------------------------------------------------------------------------------>
@@ -1877,7 +1877,7 @@ L15.059,2.824z"></path>
     <ul>{{each pending.fields as #field, #i}}
       <li class="card-template-editor-field">
         <div class="card-template-editor-field-content">{{on #field.type as #type}}
-          <view name="{{l-card:fields:{{#type}}:editor}}" optional="true"></view>{{/}} {{unless #field.type == 'score'}}
+          <view name="l-card:fields:{{#type}}:editor" optional="true"></view>{{/}} {{unless #field.type == 'score'}}
           <a class="card-field-options has-tip" data-index="{{#i}}" title="Options" href="#" on-click="cardFieldMenu.toggle($element)" on-click="$preventDefault($event)">
             <view name="card-editor:icon-caret-down"></view>
           </a>{{else}}<span class="card-field-options has-tip disabled" title="Overall score is required on feedback forms"><view name="card-editor:icon-undeleteable"></view></span>{{/}}
@@ -3065,7 +3065,7 @@ Last interaction: {{#result.interactionDate}}">{{#result.interactionDate}}</span
 
 <profile-list-search:snippet:>
 
-<view name="{{search-box:{{#result.field}}}}" optional="true"></view>
+<view name="search-box:{{#result.field}}" optional="true"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -4500,7 +4500,7 @@ c0-0.275,0.225-0.5,0.5-0.5s0.5,0.225,0.5,0.5V13.5z"></path>
           <td class="list-name">{{#root.users_base[#profileCard.userId].name}}</td>
           <td class="list-stage">{{with #root.interviews[#profileCard.interviewId] as #interview}}{{#root.stages[#interview.stageId].text}}{{/}}</td>
           <td class="feedback-score">{{each #profileCard.fields as #field}}{{if #field.type === 'score'}}
-            <view name="{{l-card:fields:{{#field.type}}:summary}}" optional="true"></view>{{/}}{{/}}</td>
+            <view name="l-card:fields:{{#field.type}}:summary" optional="true"></view>{{/}}{{/}}</td>
           <td class="list-checkbox has-tip" title="Remove feedback from export">
             <a class="link dark" href="#" on-click="excludeFeedback(#profileCard)" on-click="$preventDefault($event)">
               <view name="icon-delete"></view>
@@ -6087,7 +6087,7 @@ L9.916,6.288c-0.003,0.002-4.875,4.874-4.875,4.874l1.484,1.483l4.873-4.872L11.484
 
 <profile-story:index:>
 
-<view name="{{{{story.category}}:{{story.action}}}}"></view>
+<view name="{{story.category}}:{{story.action}}"></view>
 
 <!------------------------------------------------------------------------------>
 
@@ -6221,7 +6221,7 @@ count ">{{#result.option.count}}</span>" as="tagsSuggest">
       <td class="feedback-summary-stage-title">{{#group.text}}</td>
       <td class="feedback-summary-stage-scores">{{each #group.scores as #score}}
         <div class="card-callout">{{with #score.field as #field}}
-          <view name="{{l-card:fields:{{#field.type}}:callout}}"></view>{{/}}
+          <view name="l-card:fields:{{#field.type}}:callout"></view>{{/}}
           <view name="l-identicon" class="has-tip">
             <user>{{#root.users_base[#score.userId]}}</user>
           </view>
@@ -6650,7 +6650,7 @@ C12.8,12.387,12.78,11.547,11.2,10.797z"></path>
 
 <div class="all-mine-control">{{each options as #option}}
   <a class="all-mine-toggle {{#option.class}}" href="{{#option.link}}" on-click="setDefault(#option.value)">
-    <view name="{{icon-{{#option.icon}}}}"></view>
+    <view name="icon-{{#option.icon}}"></view>
     <span>{{#option.text}}</span>
   </a>{{/}}</div>
 
@@ -8823,7 +8823,7 @@ Lever reports - Summary
 <div class="reports content compact-report">
   <view name="reports:reportsNav"></view>
   <div class="reports-content">
-    <view name="{{reports:pipeline:{{name}}}}"></view>
+    <view name="reports:pipeline:{{name}}"></view>
   </div>
 </div>
 
@@ -9105,7 +9105,7 @@ Lever reports - Summary
 <div class="reports content compact-report">
   <view name="reports:reportsNav"></view>
   <div class="reports-content">
-    <view name="{{reports:interviews:{{name}}}}"></view>
+    <view name="reports:interviews:{{name}}"></view>
   </div>
 </div>
 
@@ -9362,7 +9362,7 @@ Lever Reports
 
 <!------------------------------------------------------------------------------>
 
-  [32m  ✓[0m[90m input [0m[31m(1067ms)[0m
+  [32m  ✓[0m[90m input [0m[31m(1424ms)[0m
 
 
 [92m [0m[32m 1 passing[0m[90m (1s)[0m

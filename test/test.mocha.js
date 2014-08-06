@@ -275,6 +275,13 @@ describe('view', function() {
     expect(view.deserialize()).equal(html);
   });
 
+  it('<view name="{{tmp}}hello"></view>', function() {
+    var html = '<view name="{{tmp}}hello"></view>';
+    var view = getView('tmp', html);
+//    console.log('serialization: ', view.template.serialize());
+    expect(view.deserialize()).equal(html);
+  });
+
   it('<view name="tmp"><br/></view>', function() {
     var html = '<view name="tmp"><br/></view>';
     var view = getView('tmp', html);
@@ -487,34 +494,34 @@ describe('small things', function() {
 
 })
 
-describe('arbitrary', function() {
-
-
-  it.only('infinite scroll', function() {
-    var views= new templates.Views();
-    view = views.register('tmp');
-    view.template =   views.register('select-date-timezone:index').template = new templates.Template([new templates.Comment('select-date-timezone:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('select-date-timezone '), new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('if conflicts.text', 'if'))], [
-      [new templates.Text('conflict')]
-    ])]))}, [new templates.Element('div', {'class': new templates.Attribute('select-date dark-input')}, [new templates.ViewInstance('icon-calendar', {}), new templates.Element('span', {'class': new templates.Attribute('dates')}, [new templates.DynamicText(new expressions.FnExpression(['formatTime'], [new expressions.PathExpression(['date']), new expressions.PathExpression(['timezone']), new expressions.LiteralExpression('compactDateOrToday')], void 0, new expressions.ExpressionMeta('formatTime(date, timezone, \'compactDateOrToday\')')))], void 0, false), new templates.Element('span', {'class': new templates.Attribute('selected-timezone')}, [new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'], [new expressions.PathExpression(['timezone'])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(timezone)')))], void 0, false)], [new templates.ElementOn('click', new expressions.FnExpression(['calendarPopup', 'toggle'], [new expressions.PathExpression(['$element'])]))], false), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('select-timezone '), new templates.ConditionalBlock([new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('if timezone', 'if'))], [
-      [new templates.Text('selected')]
-    ]), new templates.Text(' has-tip')])), 'title': new templates.Attribute('Select timezone')}, [new templates.ViewInstance('icon-globe', {})], [new templates.ElementOn('click', new expressions.FnExpression(['timezonePopup', 'toggle'], [new expressions.PathExpression(['$element']), new expressions.LiteralExpression('right'), new expressions.LiteralExpression(5)]))], false), new templates.Element('div', {'class': new templates.Attribute('select-date-conflict')}, [new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('if conflicts.text', 'if'))], [
-      [new templates.DynamicText(new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('conflicts.text'))), new templates.Text(' not in this timezone.'), new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'timezone'], new expressions.ExpressionMeta('if conflicts.timezone', 'if')), new expressions.Expression(new expressions.ExpressionMeta('else', 'else'))], [
-        [new templates.Element('a', {'class': new templates.Attribute('link dark'), 'href': new templates.Attribute('#')}, [new templates.Text('Change to '), new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'],
-          [
-            new expressions.RelativePathExpression([])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(this)')))], [new templates.ElementOn('click', new expressions.FnExpression(['setTimezone'], [
-          new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)],
-        [new templates.Text(' Change to'), new templates.EachBlock(new expressions.PathExpression(['conflicts', 'timezones'], new expressions.ExpressionMeta('each conflicts.timezones', 'each')), [new templates.Element('a', {'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'], [
-          new expressions.RelativePathExpression([])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(this)')))], [new templates.ElementOn('click', new expressions.FnExpression(['setTimezone'], [
-          new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)])]
-      ])]
-    ])], void 0, false), new templates.ViewInstance('l-popup', {'class': 'darker', 'content': new templates.ParentWrapper(new templates.Template([new templates.ViewInstance('l-calendar', {'class': 'dark-calendar', 'value': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['date'], new expressions.ExpressionMeta('date'))), new expressions.PathExpression(['date'], new expressions.ExpressionMeta('date'))), 'timezone': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('timezone'))), new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('timezone')))}, [new templates.ComponentOn('select', new expressions.FnExpression(['selectDate'], []))])]))}, [new templates.MarkupAs(['calendarPopup'])]), new templates.ViewInstance('l-popup', {'class': 'darker', 'focus': 'input', 'content': new templates.ParentWrapper(new templates.Template([new templates.ViewInstance('l-picker', {'type': 'input', 'options': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['timezoneOptions'], new expressions.ExpressionMeta('timezoneOptions'))), new expressions.PathExpression(['timezoneOptions'], new expressions.ExpressionMeta('timezoneOptions')))}, [new templates.ComponentOn('select', new expressions.FnExpression(['selectTimezone'], []))])]))}, [new templates.MarkupAs(['timezonePopup'])])], void 0, false)]);
-
-    console.log('inf:', view.deserialize());
-  });
-
-
-
-});
+//describe('arbitrary', function() {
+//
+//
+//  it.only('infinite scroll', function() {
+//    var views= new templates.Views();
+//    view = views.register('tmp');
+//    view.template =   views.register('select-date-timezone:index').template = new templates.Template([new templates.Comment('select-date-timezone:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('select-date-timezone '), new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('if conflicts.text', 'if'))], [
+//      [new templates.Text('conflict')]
+//    ])]))}, [new templates.Element('div', {'class': new templates.Attribute('select-date dark-input')}, [new templates.ViewInstance('icon-calendar', {}), new templates.Element('span', {'class': new templates.Attribute('dates')}, [new templates.DynamicText(new expressions.FnExpression(['formatTime'], [new expressions.PathExpression(['date']), new expressions.PathExpression(['timezone']), new expressions.LiteralExpression('compactDateOrToday')], void 0, new expressions.ExpressionMeta('formatTime(date, timezone, \'compactDateOrToday\')')))], void 0, false), new templates.Element('span', {'class': new templates.Attribute('selected-timezone')}, [new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'], [new expressions.PathExpression(['timezone'])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(timezone)')))], void 0, false)], [new templates.ElementOn('click', new expressions.FnExpression(['calendarPopup', 'toggle'], [new expressions.PathExpression(['$element'])]))], false), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('select-timezone '), new templates.ConditionalBlock([new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('if timezone', 'if'))], [
+//      [new templates.Text('selected')]
+//    ]), new templates.Text(' has-tip')])), 'title': new templates.Attribute('Select timezone')}, [new templates.ViewInstance('icon-globe', {})], [new templates.ElementOn('click', new expressions.FnExpression(['timezonePopup', 'toggle'], [new expressions.PathExpression(['$element']), new expressions.LiteralExpression('right'), new expressions.LiteralExpression(5)]))], false), new templates.Element('div', {'class': new templates.Attribute('select-date-conflict')}, [new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('if conflicts.text', 'if'))], [
+//      [new templates.DynamicText(new expressions.PathExpression(['conflicts', 'text'], new expressions.ExpressionMeta('conflicts.text'))), new templates.Text(' not in this timezone.'), new templates.ConditionalBlock([new expressions.PathExpression(['conflicts', 'timezone'], new expressions.ExpressionMeta('if conflicts.timezone', 'if')), new expressions.Expression(new expressions.ExpressionMeta('else', 'else'))], [
+//        [new templates.Element('a', {'class': new templates.Attribute('link dark'), 'href': new templates.Attribute('#')}, [new templates.Text('Change to '), new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'],
+//          [
+//            new expressions.RelativePathExpression([])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(this)')))], [new templates.ElementOn('click', new expressions.FnExpression(['setTimezone'], [
+//          new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)],
+//        [new templates.Text(' Change to'), new templates.EachBlock(new expressions.PathExpression(['conflicts', 'timezones'], new expressions.ExpressionMeta('each conflicts.timezones', 'each')), [new templates.Element('a', {'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.FnExpression(['displayTimezoneCompact'], [
+//          new expressions.RelativePathExpression([])], void 0, new expressions.ExpressionMeta('displayTimezoneCompact(this)')))], [new templates.ElementOn('click', new expressions.FnExpression(['setTimezone'], [
+//          new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)])]
+//      ])]
+//    ])], void 0, false), new templates.ViewInstance('l-popup', {'class': 'darker', 'content': new templates.ParentWrapper(new templates.Template([new templates.ViewInstance('l-calendar', {'class': 'dark-calendar', 'value': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['date'], new expressions.ExpressionMeta('date'))), new expressions.PathExpression(['date'], new expressions.ExpressionMeta('date'))), 'timezone': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('timezone'))), new expressions.PathExpression(['timezone'], new expressions.ExpressionMeta('timezone')))}, [new templates.ComponentOn('select', new expressions.FnExpression(['selectDate'], []))])]))}, [new templates.MarkupAs(['calendarPopup'])]), new templates.ViewInstance('l-popup', {'class': 'darker', 'focus': 'input', 'content': new templates.ParentWrapper(new templates.Template([new templates.ViewInstance('l-picker', {'type': 'input', 'options': new templates.ParentWrapper(new templates.DynamicText(new expressions.PathExpression(['timezoneOptions'], new expressions.ExpressionMeta('timezoneOptions'))), new expressions.PathExpression(['timezoneOptions'], new expressions.ExpressionMeta('timezoneOptions')))}, [new templates.ComponentOn('select', new expressions.FnExpression(['selectTimezone'], []))])]))}, [new templates.MarkupAs(['timezonePopup'])])], void 0, false)]);
+//
+//    console.log('inf:', view.deserialize());
+//  });
+//
+//
+//
+//});
 
 
 
