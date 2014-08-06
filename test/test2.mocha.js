@@ -19,13 +19,43 @@ describe('Views', function() {
       var view = views.find(viewName);
 
 
-      console.log(view.name);
+
+      var result = '';
+
+      result += '<'+view.name+':';
+
+//      if (view.name == 'l-calendar:index') {
+//        console.log('l-calendar', view.options);
+//      }
+
+      view.options = view.options || {};
+
+      var element = view.options.element;
+      var attributes = view.options.attributes;
+      var arrays = view.options.arrays;
+
+      if (element) {
+        result += ' element="'+element+'"';
+      }
+      if (attributes) {
+        result += ' attributes="'+attributes+'"';
+      }
+      if (arrays) {
+        result += ' arrays="'+arrays+'"';
+      }
+      result += '>';
+
       console.log();
+      console.log(result);
+
+      console.log();
+
       var html = view.deserialize();
 
-      console.log(beautify(html, {indent_size: 2}));
+      console.log(beautify(html, {indent_size: 2, indent_level: 1}));
 
-      console.log('------------------------------------------------------------------------------');
+      console.log();
+      console.log('<!------------------------------------------------------------------------------>');
     });
 
   });
