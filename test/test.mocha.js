@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 var des = require('../index.js');
-var serializedViews = require('./_views.js');
+//var serializedViews = require('./_views.js');
 
 var derbyTemplates = require('derby-templates');
 require('derby-parsing')
@@ -46,6 +46,13 @@ describe('Attributes', function() {
     expect(view.deserialize()).equal(html);
   });
 
+  it('input as="test.hello"', function() {
+    var html = '<input as="test.hello"/>';
+    var view = getView('tmp', html);
+//    console.log('serialization: ', view.template.serialize());
+    expect(view.deserialize()).equal(html);
+  });
+
   it('input on-click="hello()"', function() {
     var html = '<input on-click="hello()"/>';
     var view = getView('tmp', html);
@@ -69,6 +76,13 @@ describe('Attributes', function() {
 
   it('input class="hello{{test}}"', function() {
     var html = '<input class="hello{{test}}"/>';
+    var view = getView('tmp', html);
+//    console.log('serialization: ', view.template.serialize());
+    expect(view.deserialize()).equal(html);
+  });
+
+  it('input class="{{if test}}hello{{/}}"', function() {
+    var html = '<input class="{{if test}}hello{{/}}"/>';
     var view = getView('tmp', html);
 //    console.log('serialization: ', view.template.serialize());
     expect(view.deserialize()).equal(html);
@@ -377,24 +391,23 @@ describe('view', function() {
     expect(view.deserialize()).equal(html);
   });
 
-//  it('Attributes - label: <view name="dropdown"><label class="mother"></label></view>', function() {
-//    var html = '<view name="dropdown"><label class="mother"></label></view>';
-//    var views= new templates.Views();
-//    view = views.register('dropdown', '{{@label.class}}', {'attributes': 'label'}
-//    );
-//    view.parse();
-//
-//    view = views.register('tmp', html);
-//    view.parse();
-//
-//    var ser = view.serialize();
-//    var des = view.template.deserialize();
-//
+  it('Attributes - label - dashes: <view name="dropdown"><label-l></label-l></view>', function() {
+    var html = '<view name="dropdown"><label-l></label-l></view>';
+    var views= new templates.Views();
+    view = views.register('dropdown', '{{hello}}', {'attributes': 'label-l'});
+    view.parse();
+
+    view = views.register('tmp', html);
+    view.parse();
+
+    var ser = view.serialize();
+    var des = view.deserialize();
+
 //    console.log('serialization: ', ser);
-//
-//    expect(des).equal(html);
-//
-//  });
+
+    expect(des).equal(html);
+
+  });
 
   it('Arrays - option: <view name="dropdown"><option><br/><input/></option></view>', function() {
     var html = '<view name="dropdown"><option><br/><input/></option></view>';

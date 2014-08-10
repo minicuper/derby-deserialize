@@ -24,38 +24,38 @@ describe('Views', function() {
 
       result += '<'+view.name+':';
 
-//      if (view.name == 'l-calendar:index') {
-//        console.log('l-calendar', view.options);
-//      }
+      if (view.name == 'Body' || true) {
 
-      view.options = view.options || {};
 
-      var element = view.options.element;
-      var attributes = view.options.attributes;
-      var arrays = view.options.arrays;
+        view.options = view.options || {};
 
-      if (element) {
-        result += ' element="'+element+'"';
+        var element = view.options.element;
+        var attributes = view.options.attributes;
+        var arrays = view.options.arrays;
+
+        if (element) {
+          result += ' element="' + element + '"';
+        }
+        if (attributes) {
+          result += ' attributes="' + attributes + '"';
+        }
+        if (arrays) {
+          result += ' arrays="' + arrays + '"';
+        }
+        result += '>';
+
+        console.log();
+        console.log(result);
+
+        console.log();
+
+        var html = view.deserialize();
+
+        console.log(beautify(html, {indent_size: 2, indent_level: 1}));
+
+        console.log();
+        console.log('<!------------------------------------------------------------------------------>');
       }
-      if (attributes) {
-        result += ' attributes="'+attributes+'"';
-      }
-      if (arrays) {
-        result += ' arrays="'+arrays+'"';
-      }
-      result += '>';
-
-      console.log();
-      console.log(result);
-
-      console.log();
-
-      var html = view.deserialize();
-
-      console.log(beautify(html, {indent_size: 2, indent_level: 1}));
-
-      console.log();
-      console.log('<!------------------------------------------------------------------------------>');
     });
 
   });
